@@ -1,3 +1,0 @@
-# PersonalWebsite
-
-My Personal Website
