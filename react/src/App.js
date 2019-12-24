@@ -2,23 +2,19 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Sidebar from './components/sidebar'
-import Resume from './components/resume'
-import Bio from './components/bio'
+import Main from './components/main'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+
       <div className="Sidebar">
         <Sidebar></Sidebar>
       </div>
-      <div className = "Bio">
-        <Bio></Bio>
+      <div className = "Main">
+        <Main></Main>
       </div>
-      <div className = "Resume">
-        <Resume></Resume>
-      </div>
+
 
 
     </div>

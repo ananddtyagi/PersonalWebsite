@@ -1,7 +1,16 @@
 .App {
-  text-align: center;
+  overflow-wrap: break-word;
+  margin: 0;
+  padding: 0;
+}
+* {
+    box-sizing: border-box;
 }
 
+.Main {
+  overflow: auto;
+  padding-top: 10%;
+}
 
 .profilepic {
   width:60%;
@@ -10,31 +19,54 @@
 }
 
 .Sidebar {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: black;
+  z-index: 1;
   background-color: white;
+  background: #eee;
+  float: left;
+  width: 25%;
+  z-index: 1;
+  overflow-x: hidden;
+  padding-top: 5%;
+  height: 100vh;
+  font-family: Didot;
+  font-size: 15px;
+  text-align: center;
+  bottom: 0;
+}
+
+.bio {
+  position: relative;
+  margin: 10% 6%;
+  margin-bottom: 0;
+}
+
+.bio .name {
+  font-family: serif;
+}
+
+.Sidebar .currently {
+  margin-left: 10%;
+  float: left;
+  text-align: left;
+
+}
+
+.Sidebar ul {
+  list-style-type: none;
+  padding-left: 10%;
 }
 
 .title{
   font-family: Optima;
 }
 
-.sidebar {
-  width: 25%;
-  position: absolute;
-  z-index: 1;
-  background: #eee;
-  overflow-x: hidden;
-  padding-top: 3%;
-  padding-bottom: 100%;
-}
-
-.sidebar a {
+.Sidebar a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
@@ -42,11 +74,9 @@
   display: block;
 }
 
-.sidebar a:hover {
+.Sidebar a:hover {
   color: #064579;
 }
-
-
 
 .App-link {
   color: #61dafb;

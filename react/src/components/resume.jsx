@@ -5,7 +5,7 @@ export default class Resume extends Component {
 
     return (
       <div>
-        
+        <p>Resume</p>
       </div>
     )
 
