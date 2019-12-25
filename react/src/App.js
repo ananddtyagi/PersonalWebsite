@@ -14,9 +14,6 @@ function App() {
       <div className = "Main">
         <Main></Main>
       </div>
-
-
-
     </div>
   );
 }
