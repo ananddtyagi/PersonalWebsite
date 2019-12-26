@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -40,14 +40,52 @@ function a11yProps(index) {
   };
 }
 
+const StyledTabs = withStyles({
+  root: {
+    borderBottom: '1px solid #e8e8e8',
+  },
+  indicator: {
+    backgroundColor: '#1890ff',
+  },
+})(Tabs);
+
+const StyledTab = withStyles(theme => ({
+  root: {
+    textTransform: 'none',
+    minWidth: 34,
+    fontWeight: theme.typography.fontWeightRegular,
+    marginRight: theme.spacing(4),
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ].join(','),
+    '&:hover': {
+      color: '#40a9ff',
+      opacity: 1,
+    },
+    '&$selected': {
+      color: '#1890ff',
+    },
+    '&:focus': {
+      color: '#40a9ff',
+    },
+  },
+  selected: {},
+}))(props => <Tab disableRipple {...props} />);
+
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    width: 500,
+    width: 300,
   },
-  label: {
-    textColor: '#eee'
-  },
+  tabs: {
+    backgroundColor: '',
+  }
 }));
 
 export default function FullWidthTabs() {
@@ -65,22 +103,15 @@ export default function FullWidthTabs() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs"
-          classes = {{root: classes.root, label: classes.label,}}
-        >
-          <Tab label="Item One"/>
-          <Tab label="Item Two"/>
-          <Tab label="Item Three"/>
-        </Tabs>
-      </AppBar>
-        <TabPanel  value={value} index={0} dir={theme.direction}>
+      <div className={classes.tabs}>
+        <StyledTabs value={value} onChange={handleChange} aria-label="styled tabs">
+          <StyledTab label="Resume" />
+          <StyledTab label="Blog" />
+          <StyledTab label="Photography" />
+        </StyledTabs>
+        <Typography className={classes.padding} />
+      </div>
+        <TabPanel value={value} index={0} dir={theme.direction}>
           <Resume></Resume>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
