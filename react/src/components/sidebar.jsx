@@ -9,20 +9,12 @@ export default class Sidebar extends Component {
             <div className="sidecontent">
 
             <img className="profilepic" src={Prof}/>
-            <div className="bio">
-              <h3 className="name"> HI! I'M ANAND. </h3>
-              <p> I'm a Junior at NYU studying Computer Science and Math. I have a passion for CS and Entrepreneurship and enjoy working on tough and interesting problems. </p>
-            </div>
-            <div className="currently">
-              <p className="title"> Currently I am... </p>
-              <ul>
-                <li>Listening to...</li>
-                <li>Reading...</li>
-                <li>Watching...</li>
-                <li></li>
-
-              </ul>
-            </div>
+            <a href="#aboutme" hello>About Me</a>
+            <a href="#education" hello>Education</a>
+            <a href="#work" hello>Work</a>
+            <a href="#projects" hello>Projects</a>
+            <a href="#skillsandhobbies" hello>Skills and Hobbies</a>
+            <a href="#blog" hello>Blog</a>
 
           </div>
 

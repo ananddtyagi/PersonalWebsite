@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Sidebar from './components/sidebar'
-import Main from './components/main'
+import Sidebar from './components/sidebar';
+import Main from './components/main';
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
       <div className = "Main">
         <Main></Main>
       </div>
+
     </div>
   );
 }
