@@ -11,15 +11,15 @@ export default class Main extends Component {
 
     return (
       <div>
-        <section className="section" id="aboutme">
+        <div className="section" id="aboutme">
           <AboutMe></AboutMe>
-        </section >
-        <section className="section" id="education">
+        </div >
+        <div className="section" id="education">
           <Education></Education>
-        </section>
-        <section className="section" id="work">
+        </div>
+        <div className="section" id="work">
           <Work></Work>
-        </section>
+        </div>
         <div className="section" id="projects">
           <Projects></Projects>
         </div>
