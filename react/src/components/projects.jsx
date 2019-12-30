@@ -6,7 +6,15 @@ export default class Projects extends Component {
     return (
       <div>
         <h1>Projects</h1>
-        <h2 className="head">New York University</h2>
+        <h2 className="head">Tetris</h2>
+        <h4 className="year">Dec 2019</h4>
+        <div className="content">
+          <ul>
+            <li>For my Computer Graphics course, I decided to remake Tetris for my final project. I used OpenGL and rasterization techniques learned in the class to generate all of the shapes from scratch. Additionally, after the class ended, I finished the game by adding textures and polishing the game mechanics and logic.</li>
+          </ul>
+        </div>
+
+        <h2 className="head">Idiom Translation</h2>
         <h4 className="year">Nov 2018 - Now</h4>
         <div className="content">
           <ul>
