@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import github from ".././images/github.png";
 import linkedin from ".././images/linkedin.png";
-import gmail from ".././images/gmail.png";
 import wordpress from ".././images/wordpress.png";
-
-
-
-
 
 export default class AboutMe extends Component {
   render() {
@@ -21,12 +16,7 @@ export default class AboutMe extends Component {
         <a target="_blank" href="https://www.linkedin.com/in/ananddtyagi/">
           <img className="icon" src={linkedin}/>
         </a>
-        <a target="_blank" href="">
-          <img className="icon" src={gmail} />
-        </a>
-        <a target="_blank" href="https://adtyagi.wordpress.com/">
-          <img className="icon" src={wordpress}/>
-        </a>
+        
       </div>
     )
   }

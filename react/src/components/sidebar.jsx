@@ -9,12 +9,12 @@ export default class Sidebar extends Component {
             <div className="sidecontent">
 
             <img className="profilepic" src={Prof}/>
-            <a href="#aboutme" hello>About Me</a>
-            <a href="#education" hello>Education</a>
-            <a href="#work" hello>Work</a>
-            <a href="#projects" hello>Projects</a>
-            <a href="#skillsandhobbies" hello>Skills and Hobbies</a>
-            <a href="#blog" hello>Blog</a>
+            <a href="#aboutme">About Me</a>
+            <a href="#education">Education</a>
+            <a href="#work">Work</a>
+            <a href="#projects">Projects</a>
+            <a href="#skillsandhobbies">Skills and Hobbies</a>
+
 
           </div>
 
