@@ -2,7 +2,8 @@
   overflow-wrap: break-word;
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Hind', sans-serif;
+
 
 }
 * {
@@ -75,7 +76,7 @@
 }
 
 .Sidebar a {
-  padding: 6px 8px 6px 16px;
+  padding: 6px 8px 10px 16px;
   text-decoration: none;
   font-size: 150%;
   color: #fcfcfc;
@@ -100,7 +101,7 @@ h1 {
 .name {
   display: flex;
   font-size: 120px;
-  margin-top: 20%;
+  margin-top: 15%;
   margin-bottom: 5%;
 }
 
