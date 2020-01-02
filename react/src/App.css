@@ -98,11 +98,19 @@ h1 {
   color: #32407b;
 }
 
+#aboutme {
+  display:inline-block;
+
+}
 .name {
   display: flex;
   font-size: 120px;
   margin-top: 15%;
-  margin-bottom: 5%;
+  margin-bottom: 1%;
+}
+
+.bio {
+  float: right;
 }
 
 p {
