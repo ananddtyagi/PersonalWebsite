@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink
 } from "react-router-dom";
 import Prof from ".././images/profilepic.jpg";
 
@@ -15,12 +15,12 @@ export default class Sidebar extends Component {
         <div>
             <div className="sidecontent">
 
-            <Link to="/"><img className="profilepic" src={Prof}/></Link>
-            <Link to="#aboutme">About Me</Link>
-            <Link to="#education">Education</Link>
-            <Link to="#work">Work</Link>
-            <Link to="#projects">Projects</Link>
-            <Link to="#skillsandhobbies">Skills and Hobbies</Link>
+            <NavLink to="/"><img className="profilepic" src={Prof}/></NavLink>
+            <NavLink to="/aboutme">About Me</NavLink>
+            <NavLink to="/education">Education</NavLink>
+            <NavLink to="/work">Work</NavLink>
+            <NavLink to="/projects">Projects</NavLink>
+            <NavLink to="/skillsandhobbies">Skills and Hobbies</NavLink>
 
 
           </div>
