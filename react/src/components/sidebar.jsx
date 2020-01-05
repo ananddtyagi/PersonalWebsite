@@ -3,27 +3,25 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink
+  Link
 } from "react-router-dom";
 import Prof from ".././images/profilepic.jpg";
 
 export default class Sidebar extends Component {
+
   render() {
 
     return (
       <Router>
         <div>
             <div className="sidecontent">
-
-            <NavLink to="/"><img className="profilepic" src={Prof}/></NavLink>
-            <NavLink to="/aboutme">About Me</NavLink>
-            <NavLink to="/education">Education</NavLink>
-            <NavLink to="/work">Work</NavLink>
-            <NavLink to="/projects">Projects</NavLink>
-            <NavLink to="/skillsandhobbies">Skills and Hobbies</NavLink>
-
-
-          </div>
+              <a href="/"><img className="profilepic" src={Prof}/></a>
+              <a href="/#aboutme">About Me</a>
+              <a href="/#education">Education</a>
+              <a href="/#work">Work</a>
+              <a href="/#projects">Projects</a>
+              <a href="/#skillsandhobbies">Skills and Hobbies</a>
+            </div>
 
         </div>
       </Router>
