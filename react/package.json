@@ -4,11 +4,13 @@
   "private": true,
   "homepage": "https://anandtyagi.me",
   "dependencies": {
+    "@material-ui/core": "^4.8.2",
     "gh-pages": "^2.0.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-scripts": "^3.3.0",
     "travis": "^0.1.1",
+    "typescript": "^3.7.4",
     "yarn": "^1.13.0"
   },
   "scripts": {
