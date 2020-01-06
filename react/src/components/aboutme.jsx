@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import github from ".././images/github.png";
 import linkedin from ".././images/linkedin.png";
 import wordpress from ".././images/wordpress.png";
+import medium from ".././images/medium.png";
+
 
 export default class AboutMe extends Component {
   render() {
@@ -16,6 +18,13 @@ export default class AboutMe extends Component {
         <a target="_blank" href="https://www.linkedin.com/in/ananddtyagi/">
           <img className="icon" src={linkedin}/>
         </a>
+        <a target="_blank" href="https://adtyagi.wordpress.com/">
+          <img className="icon" src={wordpress}/>
+        </a>
+        <a target="_blank" href="https://medium.com/@anandtyagi">
+          <img className="icon" src={medium}/>
+        </a>
+
 
       </div>
     )
