@@ -14,11 +14,11 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Sidebar from './components/sidebar';
 import Main from './components/main';
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
+    display: 'inline-block',
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -26,26 +26,24 @@ const useStyles = makeStyles(theme => ({
       flexShrink: 0,
     },
     height: '100vh',
+    backgroundColor: '#fcfcfc',
+
+
   },
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
-  },
+
   menuButton: {
-
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-
+    marginLeft: '1px',
+    marginRight: '0px',
   },
   toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-  },
+
   content: {
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: '6%'
+
+    },
     flexGrow: 1,
+    paddingLeft: '0px'
 
   },
 }));
@@ -61,7 +59,6 @@ function App(props) {
       setMobileOpen(!mobileOpen);
     };
 
-
   return (
     <div className="App">
 
@@ -76,7 +73,8 @@ function App(props) {
             >
               <MenuIcon />
         </IconButton>
-        <Hidden smUp implementation="css">
+        <Hidden smUp implementation="css" >
+
           <Drawer
              anchor={'left'}
              container={container}
@@ -96,7 +94,8 @@ function App(props) {
           </Drawer>
         </Hidden>
 
-        <Hidden xsDown implementation="css">
+        <Hidden xsDown implementation="css" >
+
            <Drawer
              variant="permanent"
              open
@@ -113,7 +112,6 @@ function App(props) {
         <div className = {classes.content}>
         <main>
         <div className = "Main">
-
             <Main></Main>
           </div>
         </main>

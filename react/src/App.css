@@ -4,6 +4,8 @@
   padding: 0;
   font-family: 'Hind', sans-serif;
   display: flex;
+  background-color: #fcfcfc;
+
 
 }
 * {
@@ -13,7 +15,6 @@
 .Main {
   display: flex;
   overflow: auto;
-  padding-left: 10%;
   padding-right: 7%;
   height: 100vh;
   scroll-behavior: smooth;
@@ -63,7 +64,7 @@
   color: black;
   background-color: white;
   background: #151965;
-  float: left;
+
   overflow-x: hidden;
   padding-top: 10%;
   height: 100vh;
