@@ -28,9 +28,7 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
     backgroundColor: '#fcfcfc',
 
-
   },
-
   menuButton: {
     marginLeft: '1px',
     marginRight: '0px',

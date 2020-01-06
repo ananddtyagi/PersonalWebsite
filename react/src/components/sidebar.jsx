@@ -8,12 +8,9 @@ import {
 import Prof from ".././images/profilepic.jpg";
 
 export default class Sidebar extends Component {
-
   render() {
 
     return (
-      <Router>
-        <div>
             <div className="sidecontent">
               <a href="/"><img className="profilepic" src={Prof}/></a>
               <a href="/#aboutme">About Me</a>
@@ -22,10 +19,7 @@ export default class Sidebar extends Component {
               <a href="/#projects">Projects</a>
               <a href="/#skillsandhobbies">Skills and Hobbies</a>
             </div>
-
-        </div>
-      </Router>
     )
-
   }
+
 }
