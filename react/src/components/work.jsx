@@ -9,6 +9,7 @@ export default class Work extends Component {
           <h2 className="head">Gulaq</h2>
 
           <h4 className="year">May 2019 - Aug 2019</h4>
+          <h5>Robo-advisory fintech startup focused on India</h5>
           <div className="content">
             <p className="position"> Web Development Intern, Algorithm Research Intern </p>
             <p className="location">Millburn, New Jersey</p>
@@ -21,9 +22,11 @@ export default class Work extends Component {
           <h2 className="head">SK Holdings</h2>
 
           <h4 className="year">​May 2018 - Aug 2018</h4>
+          <h5>3rd largest Korean conglomerate with​ ​$200B+ revenue</h5>
           <div className="content">
+
             <p className="position"> Research Assistant, Technology Consultant, Internship </p>
-            <p className="location">Millburn, New Jersey</p>
+            <p className="location">Seoul, South Korea</p>
             <ul>
               <li>Worked alongside the Global Business Development team to research companies for potential investment. This was the first time SK Holdings was investing in foreign companies and as the first foreign hire, my main functions included researching foreign startups for potential investment, helping decide which companies would be worth investing in, and at times, communicating and interviewing companies directly. I also provided assistance in understanding the technological or scientific aspects of the products we reviewed.</li>
             </ul>
