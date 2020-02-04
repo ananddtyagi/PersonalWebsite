@@ -6,11 +6,16 @@ export default class Work extends Component {
     return (
       <div>
         <h1>Work Experience</h1>
-          <h2 className="head">Gulaq</h2>
+          <div className="header">
+            <h2 className="head">Gulaq</h2>
+            <h4 className="year">May 2019 - Aug 2019</h4>
+          </div>
 
-          <h4 className="year">May 2019 - Aug 2019</h4>
-          <h5>Robo-advisory fintech startup focused on India</h5>
           <div className="content">
+          <div className="desc">
+            <h5> Robo-advisory fintech startup focused on India</h5>
+          </div>
+
             <p className="position"> Web Development Intern, Algorithm Research Intern </p>
             <p className="location">Millburn, New Jersey</p>
             <ul>
@@ -22,9 +27,10 @@ export default class Work extends Component {
           <h2 className="head">SK Holdings</h2>
 
           <h4 className="year">​May 2018 - Aug 2018</h4>
-          <h5>3rd largest Korean conglomerate with​ ​$200B+ revenue</h5>
           <div className="content">
-
+          <div className="desc">
+            <h5> 3rd largest Korean conglomerate with​ ​$200B+ revenue</h5>
+          </div>
             <p className="position"> Research Assistant, Technology Consultant, Internship </p>
             <p className="location">Seoul, South Korea</p>
             <ul>

@@ -25,15 +25,30 @@
 .Main .year {
   text-align:right;
   float:right;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .Main .head {
   text-align:left;
   float:left;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+
+}
+
+.Main .header {
+  display: block;
+
+}
+.Main .desc {
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
 .Main .content {
   display:inline-block;
+
 }
 
 .Main .section {
@@ -100,6 +115,10 @@ h1 {
   padding-bottom: 0%;
   margin-bottom: 0%;
   color: #32407b;
+  display: block;
+}
+h5 {
+  font-style: italic;
 }
 
 #aboutme {
@@ -107,10 +126,11 @@ h1 {
 
 }
 .name {
-  display: flex;
+
   font-size: 120px;
   margin-top: 15%;
   margin-bottom: 1%;
+  display: block;
 }
 
 .bio {
