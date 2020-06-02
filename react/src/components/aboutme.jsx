@@ -11,7 +11,7 @@ export default class AboutMe extends Component {
     return (
       <div>
         <h1 className="name">ANAND TYAGI</h1>
-        <p className="bio"> Hi! I'm Anand. I'm a Junior at NYU studying Computer Science, Mathematics, and Data Science with a minor in Business Studies. I have a passion for CS and Entrepreneurship and enjoy working on tough and interesting problems. </p>
+        <p className="bio"> Hi! I'm Anand. I'm a Junior at NYU studying Computer Science and Data Science I have a passion for CS and Entrepreneurship and enjoy working on tough and interesting problems. </p>
         <a target="_blank" href="https://github.com/ananddtyagi">
           <img className="icon" src={github}/>
         </a>
