@@ -4,15 +4,16 @@
   "private": true,
   "homepage": "https://anandtyagi.me",
   "dependencies": {
-    "@material-ui/core": "^4.8.2",
-    "@material-ui/icons": "^4.5.1",
-    "gh-pages": "^2.0.1",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "^3.3.0",
+    "@material-ui/core": "^4.10.1",
+    "@material-ui/icons": "^4.9.1",
+    "gh-pages": "^2.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.1",
     "travis": "^0.1.1",
-    "typescript": "^3.7.4",
-    "yarn": "^1.13.0"
+    "typescript": "^3.9.3",
+    "yarn": "^1.22.4"
   },
   "scripts": {
     "start": "react-scripts start",

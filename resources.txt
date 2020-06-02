@@ -1,8 +1,0 @@
-Design:
-  https://coolors.co/?fbclid=IwAR3AEdpo_f6vE1J7Xa1MqJoYbY4zMNFd0BWobCPVqd4rZX4Qw0zFbOI6GVs
-  https://fonts.google.com/?fbclid=IwAR3gYbVffmHsP7YljwMqCdPTkBWfnGQxMYyFEaz1oZlCx52aT2tUiau-fGQ
-  https://fontawesome.com/icons?d=gallery&fbclid=IwAR1sCxa5InqIjICj_UknvOeSUy98QrVmPZw_KxaqD6w5olUAaCLIgfTf2XE
-  https://colorhunt.co/palette/164611
-  https://logomakr.com/5fUYse
-  https://github.com/dbarochiya/me/
-  
