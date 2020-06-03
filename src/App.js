@@ -16,7 +16,7 @@ import Education from './components/education.jsx';
 import Work from './components/work.jsx';
 import Projects from './components/projects.jsx';
 import SkillsandHobbies from './components/skillsandhobbies.jsx';
-
+import Contact from './components/contact.jsx';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,6 +44,7 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    width: '100vw',
   },
   header: {
     textAlign: 'center',
@@ -54,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     paddingBottom: theme.spacing(5),
   },
-
   tablabel: {
     paddingRight: theme.spacing(10),
     paddingLeft: theme.spacing(10)
@@ -72,9 +72,9 @@ function App(props) {
   };
 
   return (
-    <div className="App">
+    <div className={classes.root}>
       <Container maxWidth="lg">
-        <div className={classes.root}>
+        <div>
           <Grid className={classes.header} item xs={12}>
             <Typography  variant="h2" component="h2" gutterBottom>
               Anand Tyagi
@@ -101,27 +101,16 @@ function App(props) {
             <Grid item xs>
             </Grid>
           </Grid>
-          <Grid container spacing={3}>
-            <Grid item xs>
-
-            </Grid>
-            <Grid item xs={8}>
-              {section == 'About Me' &&
-              <div>
-                <AboutMe></AboutMe>
-                <Education></Education>
-                <Work></Work>
-                <SkillsandHobbies></SkillsandHobbies>
-              </div>
-              }
-              {section == 'Projects' &&
-                <Projects></Projects>
-              }
-
-            </Grid>
-            <Grid item xs>
-
-            </Grid>
+          <Grid>
+            {section == 'About Me' &&
+              <AboutMe></AboutMe>
+            }
+            {section == 'Projects' &&
+              <Projects></Projects>
+            }
+            {section == 'Contact' &&
+              <Contact></Contact>
+            }
           </Grid>
         </div>
       </Container>

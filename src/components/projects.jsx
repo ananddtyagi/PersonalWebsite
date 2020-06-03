@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-export default class Projects extends Component {
+import Grid from '@material-ui/core/Grid';
+
+class Main extends Component {
   render() {
 
     return (
@@ -35,10 +37,31 @@ export default class Projects extends Component {
         <h4 className="year">Aug - Dec 2017</h4>
         <div className="content">
           <ul>
-            <li>Working under Professor Dennis Shasha, I wrote an application in Java which takes a dancer’s current tango position and
-provides suggestions on which positions to pursue next. After being taught a little bit about the Tango, I learned that dancers often resort to usual patterns when creating dance routines and so this project aimed to help dancers discover new, potentially unperformed, dance routines.</li>
+            <li>Working under Professor Dennis Shasha, I wrote an application in Java which takes a dancer’s current tango position and provides suggestions on which positions to pursue next. After being taught a little bit about the Tango, I learned that dancers often resort to usual patterns when creating dance routines and so this project aimed to help dancers discover new, potentially unperformed, dance routines.</li>
           </ul>
         </div>
+      </div>
+    )
+  }
+}
+
+
+export default class Projects extends Component {
+  render() {
+
+    return (
+      <div>
+        <Grid container spacing={3}>
+          <Grid item xs>
+
+          </Grid>
+          <Grid item xs={8}>
+            <Main></Main>
+          </Grid>
+
+          <Grid item xs>
+          </Grid>
+        </Grid>
       </div>
     )
   }
