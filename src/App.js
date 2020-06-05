@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -53,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(5),
     paddingBottom: theme.spacing(2),
   },
+  home: {
+    color: 'black',
+    textDecoration:'none',
+  },
   tabs: {
     textAlign: 'center',
     paddingBottom: theme.spacing(5),
@@ -74,55 +84,63 @@ function App(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <Container maxWidth="lg">
-        <div>
-          <Grid className={classes.header} item xs={12}>
-            <Typography  variant="h2" component="h2" gutterBottom>
-              Anand Tyagi
-            </Typography>
-          </Grid>
-          <Grid container spacing={3} className={classes.tabs}>
-            <Grid item xs>
+    <Router>
+      <div className={classes.root}>
+        <Container maxWidth="lg">
+          <div>
+            <Grid className={classes.header} item xs={12}>
+              <Typography className={classes.home} variant="h2" component="h2" gutterBottom value ="/about" component={Link} to={'/'}>
+                Anand Tyagi
+              </Typography>
             </Grid>
-            <Grid item xs={8}>
-              <Tabs
-                value={value}
-                indicatorColor="primary"
-                textColor="primary"
-                onChange={handleChange}
-                aria-label="tabs"
-                centered
-                variant="fullWidth"
-              >
-                <Tab fullWidth label="About Me" onClick={() => setSection("About Me")}/>
-                <Tab fullWidth label="Projects" onClick={() => setSection("Projects")}/>
-                <Tab fullWidth label="Contact" onClick={() => setSection("Contact")}/>
-                <Tab fullWidth label="Blog" onClick={() => setSection("Blog")}/>
+            <Grid container spacing={3} className={classes.tabs}>
+              <Grid item xs>
+              </Grid>
+              <Grid item xs={8}>
+                <Tabs
+                  value={value}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  onChange={handleChange}
+                  aria-label="tabs"
+                  centered
+                  variant="fullWidth"
+                >
 
-              </Tabs>
-            </Grid>
-            <Grid item xs>
-            </Grid>
-          </Grid>
-          <Grid>
-            {section == 'About Me' &&
-              <AboutMe></AboutMe>
-            }
-            {section == 'Projects' &&
-              <Projects></Projects>
-            }
-            {section == 'Contact' &&
-              <Contact></Contact>
-            }
-            {section == 'Blog' &&
-              <Blog></Blog>
-            }
-          </Grid>
-        </div>
-      </Container>
+                  <Tab fullWidth label="About Me" value ="/about" component={Link} to={'/about'}/>
+                  <Tab fullWidth label="Projects" value ="/projects" component={Link} to={'/projects'}/>
+                  <Tab fullWidth label="Contact" value ="/contact" component={Link} to={'/contact'}/>
+                  <Tab fullWidth label="Blog" value ="/blog" component={Link} to={'/blog'}/>
 
-    </div>
+                </Tabs>
+              </Grid>
+              <Grid item xs>
+              </Grid>
+            </Grid>
+            <Grid>
+            <Switch>
+              <Route path='/about' render={() =><AboutMe/>} />
+              <Route path='/projects' render={() =><Projects/>} />
+              <Route path='/contact' render={() =><Contact/>} />
+              <Route path='/blog' render={() =><Blog/>} />
+
+            </Switch>
+
+              {section == 'Projects' &&
+                <Projects></Projects>
+              }
+              {section == 'Contact' &&
+                <Contact></Contact>
+              }
+              {section == 'Blog' &&
+                <Blog></Blog>
+              }
+            </Grid>
+          </div>
+        </Container>
+
+      </div>
+    </Router>
   );
 }
 
