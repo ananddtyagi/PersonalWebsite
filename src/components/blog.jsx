@@ -1,12 +1,7 @@
 
 import React, { Component , useState, useEffect } from 'react';
-import github from ".././images/github.png";
-import linkedin from ".././images/linkedin.png";
-import wordpress from ".././images/wordpress.png";
-import medium from ".././images/medium.png";
 
 import Grid from '@material-ui/core/Grid';
-
 
 class Main extends Component {
 
@@ -14,11 +9,13 @@ class Main extends Component {
         super(props);
         this.state = {
           posts: [],
+          api: 'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Blog?api_key='+  process.env.REACT_APP_BLOG_API_KEY,
         };
       }
 
     componentDidMount() {
-      fetch('https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Blog?api_key=keyjbqyQO6qR7xz1P')
+      console.log(this.state.api)
+      fetch(this.state.api)
       .then((resp) => resp.json())
       .then(data => {
          this.setState({ posts: data.records });

@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import github from ".././images/github.png";
-import linkedin from ".././images/linkedin.png";
-import wordpress from ".././images/wordpress.png";
-import medium from ".././images/medium.png";
 
 import Grid from '@material-ui/core/Grid';
 
