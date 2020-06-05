@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -17,6 +17,8 @@ import Work from './components/work.jsx';
 import Projects from './components/projects.jsx';
 import SkillsandHobbies from './components/skillsandhobbies.jsx';
 import Contact from './components/contact.jsx';
+import Blog from './components/blog.jsx';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -96,6 +98,8 @@ function App(props) {
                 <Tab fullWidth label="About Me" onClick={() => setSection("About Me")}/>
                 <Tab fullWidth label="Projects" onClick={() => setSection("Projects")}/>
                 <Tab fullWidth label="Contact" onClick={() => setSection("Contact")}/>
+                <Tab fullWidth label="Blog" onClick={() => setSection("Blog")}/>
+
               </Tabs>
             </Grid>
             <Grid item xs>
@@ -110,6 +114,9 @@ function App(props) {
             }
             {section == 'Contact' &&
               <Contact></Contact>
+            }
+            {section == 'Blog' &&
+              <Blog></Blog>
             }
           </Grid>
         </div>
