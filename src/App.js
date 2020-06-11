@@ -18,7 +18,7 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
 import Main from './components/main.jsx';
-// import Admin from './components/admin.jsx';
+import Admin from './components/admin.jsx';
 import Login from './components/login.jsx';
 
 function App(props) {
@@ -28,6 +28,7 @@ function App(props) {
       <Router>
             <div>
               <Switch>
+                <Route path='/admin' render={() =><Admin/>} />
                 <Route path='/login' render={() =><Login/>} />
                 <Route path='/' render={() =><Main/>} />
               </Switch>

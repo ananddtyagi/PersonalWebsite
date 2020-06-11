@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -14,18 +15,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-function Copyright() {
-return (
-  <Typography variant="body2" color="textSecondary" align="center">
-    {'Copyright © '}
-    <Link color="inherit" href="https://material-ui.com/">
-      Your Website
-    </Link>{' '}
-    {new Date().getFullYear()}
-    {'.'}
-  </Typography>
-);
-}
 
 const useStyles = makeStyles((theme) => ({
 paper: {
@@ -47,76 +36,82 @@ submit: {
 },
 }));
 
-export default function Admin() {
-const classes = useStyles();
-const [user, setUser] = useState("")
-const [pass, setPass] = useState("")
-const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log({user}.user)
-    console.log({pass})
-    console.log(process.env.REACT_APP_ADMIN_USER)
-    console.log({user}.user === process.env.REACT_APP_ADMIN_USER)
-    if ({user}.user === process.env.REACT_APP_ADMIN_USER && {pass}.pass === process.env.REACT_APP_ADMIN_PASS){
-      console.log('LOCALE STORAGE STUFF')
-    }
-    else {
-      alert("try again")
-    }
+export default function Login() {
+  const classes = useStyles();
+  const [user, setUser] = useState("")
+  const [pass, setPass] = useState("")
+  const [isAuthenticated, setAuth] = useState("no");
 
-}
+  const handleSubmit = (event) => {
+      event.preventDefault();
 
-return (
-  <Container component="main" maxWidth="xs">
-    <CssBaseline />
-    <div className={classes.paper}>
-      <Avatar className={classes.avatar}>
-        <LockOutlinedIcon />
-      </Avatar>
-      <Typography component="h1" variant="h5">
-        Welcome Anand, login here to edit your site.
-      </Typography>
+      if ({user}.user === process.env.REACT_APP_ADMIN_USER && {pass}.pass === process.env.REACT_APP_ADMIN_PASS){
+        localStorage.setItem('authenticated', "yes");
+        setAuth(localStorage.getItem('authenticated'))
+        window.location.reload(false)
+      }
+      else {
+        alert('wrong username or password')
+      }
+  }
 
-      <form className={classes.form} onSubmit={handleSubmit}>
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          id="user"
-          label="User"
-          name="user"
-          autoComplete="user"
-          autoFocus
-          value={user}
-          onChange={e => setUser(e.target.value)}
-        />
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          label="Password"
-          type="password"
-          id="password"
-          autoComplete="password"
-          value={pass}
-          onChange={e => setPass(e.target.value)}
-        />
+  if (localStorage.getItem('authenticated') === "no"){
+    return (
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Welcome Anand, login here to edit your site.
+          </Typography>
 
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-        >
-          Sign In
-        </Button>
+          <form className={classes.form} onSubmit={handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="user"
+              label="User"
+              name="user"
+              autoComplete="user"
+              autoFocus
+              value={user}
+              onChange={e => setUser(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="password"
+              value={pass}
+              onChange={e => setPass(e.target.value)}
+            />
 
-      </form>
-    </div>
-  </Container>
-);
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+
+          </form>
+        </div>
+      </Container>
+    )
+  } else {
+    return (
+      <Redirect to='/admin' />
+    )
+  }
 }
