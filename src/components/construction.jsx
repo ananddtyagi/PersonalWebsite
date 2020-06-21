@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 
 import Grid from '@material-ui/core/Grid';
 
-
 class Main extends Component {
   render() {
 
     return (
       <div>
-          <p>Contact me at anand dot tyagi at nyu dot edu</p>
+          <p>Hi there! I'm still building this part of the site. Check back soon!</p>
       </div>
     )
   }
 }
 
-export default class Contact extends Component {
+export default class Construction extends Component {
   render() {
 
     return (

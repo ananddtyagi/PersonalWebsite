@@ -24,6 +24,7 @@ import Projects from './projects.jsx';
 import SkillsandHobbies from './skillsandhobbies.jsx';
 import Contact from './contact.jsx';
 import Blog from './blog.jsx';
+import Construction from './construction.jsx';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,11 +65,11 @@ const useStyles = makeStyles((theme) => ({
   },
   tabs: {
     textAlign: 'center',
-    paddingBottom: theme.spacing(5),
+    paddingBottom: theme.spacing(1),
   },
   tablabel: {
     paddingRight: theme.spacing(10),
-    paddingLeft: theme.spacing(10)
+    paddingLeft: theme.spacing(10),
   }
 }));
 
@@ -120,10 +121,11 @@ function Main(props) {
             <Grid>
             <Switch>
 
+              <Route exact path='/' render={() =><AboutMe/>} />
               <Route path='/about' render={() =><AboutMe/>} />
               <Route path='/projects' render={() =><Projects/>} />
               <Route path='/contact' render={() =><Contact/>} />
-              <Route path='/blog' render={() =><Blog/>} />
+              <Route path='/blog' render={() =><Construction/>} />
 
             </Switch>
 
