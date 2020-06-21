@@ -20,7 +20,7 @@ import Box from '@material-ui/core/Box';
 import AboutMe from './aboutme.jsx';
 import Education from './education.jsx';
 import Work from './work.jsx';
-import Projects from './projects.jsx';
+import Projects from './projectsCLASS.jsx';
 import SkillsandHobbies from './skillsandhobbies.jsx';
 import Contact from './contact.jsx';
 import Blog from './blog.jsx';
