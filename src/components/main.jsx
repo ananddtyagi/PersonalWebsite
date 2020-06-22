@@ -21,7 +21,7 @@ import AboutMe from './aboutme.jsx';
 import Education from './education.jsx';
 import Work from './work.jsx';
 import Projects from './projectsCLASS.jsx';
-import SkillsandHobbies from './skillsandhobbies.jsx';
+import SkillsandHobbies from './hobbies.jsx';
 import Contact from './contact.jsx';
 import Blog from './blog.jsx';
 import Construction from './construction.jsx';

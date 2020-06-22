@@ -1,43 +1,106 @@
-import React, { Component } from 'react'
+import React, { Component , useState, useEffect } from 'react';
+import axios from 'axios';
 
-export default class Work extends Component {
-  render() {
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
-    return (
-      <div>
-        <h1>Work Experience</h1>
-          <div className="header">
-            <h2 className="head">Gulaq</h2>
-            <h4 className="year">May 2019 - Aug 2019</h4>
-          </div>
+import Typography from '@material-ui/core/Typography';
 
-          <div className="content">
-          <div className="desc">
-            <h5> Robo-advisory fintech startup focused on India</h5>
-          </div>
+import { makeStyles } from '@material-ui/core/styles';
 
-            <p className="position"> Web Development Intern, Algorithm Research Intern </p>
-            <p className="location">Millburn, New Jersey</p>
-            <ul>
-              <li>Worked alongside the product team in India to create the Survey page using React and Node.js. The survey took financial data from users that would eventually be used to provide personalized investment recommendations.</li>
-              <li>Developed an investment algorithm that provided a solution for optimizing the investment of a lump sum of money over multiple funds. I was tasked with choosing which heuristic would be the best to follow as well as what parameters we would be considering. In the end, I wrote a completely new algorithm over the one the company was using previously and was able to provide a better or equal result in 100% of the test cases. As a result, my algorithm is the one currently being used by the company.</li>
-            </ul>
-          </div>
+const useStyles = makeStyles((theme) => ({
+  section: {
+    paddingBottom: theme.spacing(5),
+    paddingTop: theme.spacing(5)
+  },
+  subsection: {
+    paddingBottom: theme.spacing(2),
+    paddingTop: theme.spacing(2)
+  },
+  main: {
+    display:"inline",
+  },
+  subtext: {
+    paddingBottom: theme.spacing(2)
+  },
+  subtitle: {
+    paddingBottom: theme.spacing(2)
+  },
+  body: {
+    paddingBottom: theme.spacing(2)
+  },
 
-          <h2 className="head">SK Holdings</h2>
+  company: {
+    display:'inline',
+  },
 
-          <h4 className="year">​May 2018 - Aug 2018</h4>
-          <div className="content">
-          <div className="desc">
-            <h5> 3rd largest Korean conglomerate with​ ​$200B+ revenue</h5>
-          </div>
-            <p className="position"> Research Assistant, Technology Consultant, Internship </p>
-            <p className="location">Seoul, South Korea</p>
-            <ul>
-              <li>Worked alongside the Global Business Development team to research companies for potential investment. This was the first time SK Holdings was investing in foreign companies and as the first foreign hire, my main functions included researching foreign startups for potential investment, helping decide which companies would be worth investing in, and at times, communicating and interviewing companies directly. I also provided assistance in understanding the technological or scientific aspects of the products we reviewed.</li>
-            </ul>
-          </div>
-      </div>
-    )
+  description: {
+    display:'inline',
+    marginLeft: '1em'
   }
+
+}));
+
+
+export default function Work(props) {
+  const [data, setData] = useState([]);
+  const classes = useStyles();
+
+  useEffect(async () => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Work?api_key='+  process.env.REACT_APP_BLOG_API_KEY,
+      );
+
+      setData(result.data.records);
+    };
+
+    fetchData();
+  }, []);
+
+
+  return (
+    <div>
+      <Box className={classes.section}>
+        <Typography variant='h3' >
+          Work
+        </Typography>
+        {data.map(info => <InfoCard fields={info.fields} />)}
+      </Box>
+
+    </div>
+  )
+}
+
+function InfoCard ({fields}) {
+  const classes = useStyles();
+
+  return (
+    <div>
+      <div className={classes.subsection}>
+        <Box className={classes.main}>
+          <Typography variant='h4' className={classes.company}>{fields.Company},</Typography>
+          <Typography varient='h6' className={classes.description}>{fields.Description}</Typography>
+        </Box>
+        <Box className={classes.subtitle}>
+        </Box>
+
+        <Box className={classes.subtext}>
+          <Typography varient='h6'>
+            {fields.Location}, {fields.Time}
+          </Typography>
+        </Box>
+        <Box className={classes.subtext}>
+          <Typography varient='h6'>
+            {fields.Position}
+          </Typography>
+        </Box>
+        <Box className={classes.body}>
+          <Typography variant='body1'>
+              {fields.Info}
+          </Typography>
+        </Box>
+      </div>
+    </div>
+  );
 }
