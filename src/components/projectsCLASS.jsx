@@ -59,13 +59,13 @@ export default class Project extends Component {
 }
 
 
-const ProjectCard = ({ Title, Date, Description }) => (
+const ProjectCard = (props) => (
   <div className="card">
     <div className="card-body">
-      <h2 className="card-title">{Title}</h2>
-      <h4 className="card-text">{Date}</h4>
+      <h2 className="card-title">{props.Title}</h2>
+      <h4 className="card-text">{props.Date}</h4>
       <p className="card-text">
-        <small className="text-muted">{Description}</small>
+        <small className="text-muted">{props.Description}</small>
       </p>
     </div>
   </div>

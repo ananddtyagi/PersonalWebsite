@@ -25,6 +25,8 @@ import SkillsandHobbies from './skillsandhobbies.jsx';
 import Contact from './contact.jsx';
 import Blog from './blog.jsx';
 import Construction from './construction.jsx';
+import Test from './aboutmeCLASS.jsx';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -126,6 +128,7 @@ function Main(props) {
               <Route path='/projects' render={() =><Projects/>} />
               <Route path='/contact' render={() =><Contact/>} />
               <Route path='/blog' render={() =><Construction/>} />
+              <Route path='/test' render={() =><Test/>} />
 
             </Switch>
 
