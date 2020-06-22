@@ -1,50 +1,58 @@
-
 import React, { Component , useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
-export default class Education extends Component {
+import { makeStyles } from '@material-ui/core/styles';
 
 
-  constructor(props) {
-      super(props);
-      this.state = {
-        information: [],
-        api: 'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Education?api_key='+  process.env.REACT_APP_BLOG_API_KEY,
-      };
-    }
+export default function Edu(props) {
+  const [data, setData] = useState([]);
 
-  componentDidMount() {
-    console.log(this.state.api)
-    fetch(this.state.api)
-    .then((resp) => resp.json())
-    .then(data => {
-       this.setState({ information: data.records });
-    }).catch(err => {
-      // Error :(
-    });
-  }
+  useEffect(async () => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Education?api_key='+  process.env.REACT_APP_BLOG_API_KEY,
+      );
 
-  render() {
+      setData(result.data.records);
+    };
 
-    return (
-      <div>
-        <h1>Education</h1>
-        {this.state.information.map(info => <InfoCard {...info.fields} />)}
-      </div>
-    )
-  }
+    fetchData();
+  }, []);
+
+
+  return (
+    <div>
+      {data.map(info => <InfoCard {...info.fields} />)}
+    </div>
+  )
 }
-
 
 const InfoCard = (props) => (
   <div className="card">
     <div className="card-body">
-      <h2 className="card-title">{props.School}</h2>
-      <h4 className="card-text">{props.Location}</h4>
-      <h4 className="card-text">{props.Date}</h4>
-      <h3 className="card-text">{props.Degree}</h3>
+    <Grid
+      container
+      justify= "space-between"
+      spacing= {24}
+    >
+      <Grid item>
+        <Typography type="title" color="inherit">
+          <h2 className="card-title">{props.School}</h2>
+        </Typography>
+      </Grid>
 
+      <Grid item>
+      <Typography type="title" color="inherit">
+        <h4 className="card-text">{props.Date}</h4>
+      </Typography>
+      </Grid>
+    </Grid>
+
+      <h4 className="card-text">{props.Location}</h4>
+      <h3 className="card-text">{props.Degree}</h3>
       <p className="card-text">
         <small className="text-muted">{props.Info}</small>
       </p>
