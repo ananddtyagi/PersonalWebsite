@@ -20,13 +20,11 @@ import Box from '@material-ui/core/Box';
 import AboutMe from './aboutme.jsx';
 import Education from './education.jsx';
 import Work from './work.jsx';
-import Projects from './projectsCLASS.jsx';
+import Projects from './projects.jsx';
 import SkillsandHobbies from './hobbies.jsx';
 import Contact from './contact.jsx';
 import Blog from './blog.jsx';
 import Construction from './construction.jsx';
-import Test from './aboutmeCLASS.jsx';
-
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -124,11 +122,10 @@ function Main(props) {
             <Switch>
 
               <Route exact path='/' render={() =><AboutMe/>} />
-              <Route path='/about' render={() =><AboutMe/>} />
-              <Route path='/projects' render={() =><Projects/>} />
-              <Route path='/contact' render={() =><Contact/>} />
-              <Route path='/blog' render={() =><Construction/>} />
-              <Route path='/test' render={() =><Test/>} />
+              <Route exact path='/about' render={() =><AboutMe/>} />
+              <Route exact path='/projects' render={() =><Projects/>} />
+              <Route exact path='/contact' render={() =><Contact/>} />
+              <Route exact path='/blog' render={() =><Construction/>} />
 
             </Switch>
 

@@ -1,25 +1,38 @@
-import React, { Component } from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Prof from ".././images/profilepic.jpg";
+import React, { Component, useState, useEffect }from 'react'
+import github from ".././images/github.png";
+import linkedin from ".././images/linkedin.png";
+import wordpress from ".././images/wordpress.png";
+import medium from ".././images/medium.png";
 
-export default class Sidebar extends Component {
-  render() {
+import { makeStyles } from '@material-ui/core/styles';
 
-    return (
-            <div className="sidecontent">
-              <a href="/"><img className="profilepic" src={Prof}/></a>
-              <a href="/#aboutme">About Me</a>
-              <a href="/#education">Education</a>
-              <a href="/#work">Work</a>
-              <a href="/#projects">Projects</a>
-              <a href="/#skillsandhobbies">Skills and Hobbies</a>
-            </div>
-    )
+const useStyles = makeStyles((theme) => ({
+  sidebar: {
+    position: 'sticky',
   }
 
+}));
+
+export default function Sidebar() {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.sidebar}>
+      <ul>
+      <a target="_blank" href="https://github.com/ananddtyagi">
+        <img className="icon" src={github}/>
+      </a>
+      <a target="_blank" href="https://www.linkedin.com/in/ananddtyagi/">
+        <img className="icon" src={linkedin}/>
+      </a>
+      <a target="_blank" href="https://adtyagi.wordpress.com/">
+        <img className="icon" src={wordpress}/>
+      </a>
+      <a target="_blank" href="https://medium.com/@anandtyagi">
+        <img className="icon" src={medium}/>
+      </a>
+    </ul>
+    </div>
+  )
 }
+
