@@ -34,7 +34,7 @@ export default function Education(props) {
   const [data, setData] = useState([]);
   const classes = useStyles();
 
-  useEffect(async () => {
+  useEffect( () => {
     const fetchData = async () => {
       const result = await axios(
         'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Education?api_key='+  process.env.REACT_APP_BLOG_API_KEY,

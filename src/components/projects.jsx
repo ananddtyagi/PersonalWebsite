@@ -36,11 +36,10 @@ export default function Projects(fields) {
 
   useEffect( () => {
     const fetchData = async () => {
-      console.log('hello')
       const result = await axios(
         'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Projects?api_key=' +  process.env.REACT_APP_BLOG_API_KEY,
       );
-      console.log(result)
+
       setData(result.data.records);
     };
 

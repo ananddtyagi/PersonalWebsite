@@ -116,16 +116,15 @@ function Main(props) {
               </Grid>
             </Grid>
             <Grid>
-            <Switch>
+              <Switch>
 
-              <Route exact path='/' render={() => <AboutMe/>} />
-              <Route path='/about' render={() => <AboutMe/>} />
-              <Route path='/projects' render={() => <Projects/>} />
-              <Route path='/contact' render={() => <Contact/>} />
-              <Route path='/blog' render={() => <Construction/>} />
+                <Route exact path='/' render={() => <AboutMe/>} />
+                <Route path='/about' render={() => <AboutMe/>} />
+                <Route path='/projects' render={() => <Projects/>} />
+                <Route path='/contact' render={() => <Contact/>} />
+                <Route path='/blog' render={() => <Construction/>} />
 
-            </Switch>
-
+              </Switch>
             </Grid>
           </div>
         </Container>
