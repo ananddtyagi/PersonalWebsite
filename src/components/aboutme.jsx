@@ -1,4 +1,3 @@
-
 import React, { Component , useState, useEffect } from 'react';
 
 import Grid from '@material-ui/core/Grid';
@@ -35,11 +34,9 @@ export default function AboutMe () {
           <Grid item xs={8}>
             <Main></Main>
           </Grid>
-
           <Grid item xs>
           </Grid>
         </Grid>
       </div>
     )
-
 }

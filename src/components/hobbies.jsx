@@ -11,16 +11,15 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   section: {
     paddingBottom: theme.spacing(5),
-    paddingTop: theme.spacing(5)
+    paddingTop: theme.spacing(5),
   },
-  subsection: {
-    paddingBottom: theme.spacing(2),
-    paddingTop: theme.spacing(2)
-  },
-  main: {
+  header: {
     paddingBottom: theme.spacing(2)
   },
-  subtext: {
+  subsection: {
+
+  },
+  main: {
     paddingBottom: theme.spacing(2)
   },
   body: {
@@ -30,17 +29,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Projects(fields) {
+export default function Hobbies(props) {
   const [data, setData] = useState([]);
   const classes = useStyles();
 
-  useEffect( () => {
+  useEffect(async () => {
     const fetchData = async () => {
-      console.log('hello')
       const result = await axios(
-        'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Projects?api_key=' +  process.env.REACT_APP_BLOG_API_KEY,
+        'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Hobbies?api_key='+  process.env.REACT_APP_BLOG_API_KEY,
       );
-      console.log(result)
+
       setData(result.data.records);
     };
 
@@ -48,24 +46,15 @@ export default function Projects(fields) {
   }, []);
 
 
-
   return (
     <div>
-      <Grid container spacing={3}>
-        <Grid item xs>
-        </Grid>
-        <Grid item xs={8}>
-          <Box className={classes.section}>
-            <Typography variant='h3'>
-              Projects
-            </Typography>
-            {data.map(info => <InfoCard fields={info.fields} />)}
-          </Box>
-        </Grid>
+      <Box className={classes.section}>
+        <Typography variant='h3' className={classes.header}>
+          Hobbies and Other Interests
+        </Typography>
+        {data.map(info => <InfoCard fields={info.fields} />)}
+      </Box>
 
-        <Grid item xs>
-        </Grid>
-      </Grid>
     </div>
   )
 }
@@ -77,13 +66,8 @@ function InfoCard ({fields}) {
     <div>
       <div className={classes.subsection}>
         <Box className={classes.main}>
-          <Typography variant='h4'>
-            {fields.Title}
-          </Typography>
-        </Box>
-        <Box className={classes.subtext}>
-          <Typography varient='h6'>
-            {fields.Date}
+          <Typography variant='h5'>
+            {fields.Name}
           </Typography>
         </Box>
         <Box className={classes.body}>

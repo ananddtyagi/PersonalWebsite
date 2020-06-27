@@ -20,7 +20,7 @@ class Main extends Component {
       .then(data => {
          this.setState({ posts: data.records });
       }).catch(err => {
-        // Error :(
+        console.log('error')
       });
     }
 
