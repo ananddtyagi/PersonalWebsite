@@ -46,6 +46,7 @@ function a11yProps(index) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
