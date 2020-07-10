@@ -9,7 +9,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import SwipeableViews from 'react-swipeable-views';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -105,12 +104,11 @@ function Main (props) {
   }
 
 
-
 }
 
 
 
-export default function AboutMe () {
+export default function Welcome () {
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     console.log(value)

@@ -21,6 +21,8 @@ import AboutMe from './aboutme.jsx';
 import Projects from './projects.jsx';
 import Contact from './contact.jsx';
 import Blog from './blog.jsx';
+import Welcome from './welcome.jsx';
+
 import Construction from './construction.jsx';
 
 function TabPanel(props) {
@@ -82,15 +84,17 @@ function Main(props) {
     setValue(newValue);
   };
 
+
   return (
     <Router>
       <div className={classes.root}>
         <Container maxWidth="lg">
           <div>
             <Grid className={classes.header} item xs={12}>
-              <Typography className={classes.home} variant="h2" component="h2" gutterBottom value ="/about" component={Link} to={'/'}>
-                Anand Tyagi
-              </Typography>
+                <Typography className={classes.home} variant="h2" component="h2" gutterBottom value ="/" component={Link}  >
+                  Anand Tyagi
+                </Typography>
+
             </Grid>
             <Grid container spacing={3} className={classes.tabs}>
               <Grid item xs>
@@ -119,7 +123,7 @@ function Main(props) {
             <Grid>
               <Switch>
 
-                <Route exact path='/' render={() => <AboutMe/>} />
+                <Route exact path='/' render={() => <Welcome/>} />
                 <Route path='/about' render={() => <AboutMe/>} />
                 <Route path='/projects' render={() => <Projects/>} />
                 <Route path='/contact' render={() => <Contact/>} />
