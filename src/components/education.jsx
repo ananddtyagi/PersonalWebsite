@@ -11,7 +11,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   section: {
     paddingBottom: theme.spacing(5),
-    paddingTop: theme.spacing(5)
   },
   subsection: {
     paddingBottom: theme.spacing(2),

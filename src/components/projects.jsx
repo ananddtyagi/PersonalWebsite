@@ -11,10 +11,9 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   section: {
     paddingBottom: theme.spacing(5),
-    paddingTop: theme.spacing(5)
+
   },
   subsection: {
-    paddingBottom: theme.spacing(2),
     paddingTop: theme.spacing(2)
   },
   main: {
@@ -55,9 +54,6 @@ export default function Projects(fields) {
         </Grid>
         <Grid item xs={8}>
           <Box className={classes.section}>
-            <Typography variant='h3'>
-              Projects
-            </Typography>
             {data.map(info => <InfoCard fields={info.fields} />)}
           </Box>
         </Grid>

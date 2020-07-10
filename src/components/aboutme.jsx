@@ -67,55 +67,77 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Main () {
+function Main (props) {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
-  const [section, setSection] = useState('About Me');
+  let value = props.value
+  const [section, setSection] = useState();
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  switch(value){
+    case 0:
+      return (
+        <div classes={classes.root}>
+        <Education/>
+        </div>
+      )
 
-    return (
-      <div classes={classes.root}>
-      <h1>About Me</h1>
-          <Tabs
-          orientation="vertical"
-          variant="scrollable"
-          value={value}
-          onChange={handleChange}
-          aria-label="Vertical tabs example"
-          className={classes.tabs}
-        >
-          <Tab label="Education" {...a11yProps(0)} />
-          <Tab label="Work" {...a11yProps(1)} />
-          <Tab label="Hobbies" {...a11yProps(2)} />
+    case 1:
+      return (
+        <div classes={classes.root}>
+        <Work/>
+        </div>
+      )
 
-        </Tabs>
-        <TabPanel value={value} index={0}>
-          <Education/>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Work/>
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <Hobbies/>
-        </TabPanel>
+    case 2:
+      return (
+        <div classes={classes.root}>
+        <Hobbies/>
+        </div>
+      )
 
-      </div>
-    )
+    default:
+      return (
+        <div classes={classes.root}>
+        <h1>About Me</h1>
+        <Education/>
+        </div>
+      )
+
+  }
+
+
 }
 
-export default function AboutMe () {
 
+
+export default function AboutMe () {
+  const [value, setValue] = useState(0);
+  const handleChange = (event, newValue) => {
+    console.log(value)
+    setValue(newValue);
+  };
+  const classes = useStyles();
     return (
       <div>
         <Grid container spacing={3}>
           <Grid item xs>
-            <Sidebar/>
+
+            <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={value}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            className={classes.tabs}
+          >
+            <Tab label="Education" {...a11yProps(0)}/>
+            <Tab label="Work" {...a11yProps(1)}/>
+            <Tab label="Hobbies" {...a11yProps(2)} />
+
+          </Tabs>
+          <Sidebar/>
           </Grid>
           <Grid item xs={8}>
-            <Main></Main>
+            <Main value={value}></Main>
           </Grid>
           <Grid item xs>
           </Grid>
