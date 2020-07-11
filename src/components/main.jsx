@@ -74,21 +74,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 function Main(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const [tabIndex, setIndex] = useState(1);
+  const [dummy, setDummy] = useState(0);
 
   const [section, setSection] = useState('About Me');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    console.log(newValue)
   };
 
   const handleClick = () => {
-
+    setValue(0)
+    console.log(value)
   }
+
 
 
   return (
@@ -97,7 +100,7 @@ function Main(props) {
         <Container maxWidth="lg">
           <div>
             <Grid className={classes.header} item xs={12}>
-                <Typography className={classes.home} variant="h2" component="h2" gutterBottom value ="/" component={Link} to={'/'} >
+                <Typography className={classes.home} variant="h2" component="h2" gutterBottom  component={Link} value ="/" to={'/'}  onClick={handleClick}>
                   Anand Tyagi
                 </Typography>
 
@@ -107,12 +110,10 @@ function Main(props) {
               </Grid>
               <Grid item xs={8}>
                 <Tabs
-
                   value={value}
                   indicatorColor="primary"
                   textColor="primary"
                   onChange={handleChange}
-                  onClick={handleClick}
                   aria-label="tabs"
                   centered
                   variant="fullWidth"
