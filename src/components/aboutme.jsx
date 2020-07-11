@@ -13,12 +13,6 @@ import SwipeableViews from 'react-swipeable-views';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-
-import github from ".././images/github.png";
-import linkedin from ".././images/linkedin.png";
-import wordpress from ".././images/wordpress.png";
-import medium from ".././images/medium.png";
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -112,7 +106,7 @@ export default function AboutMe () {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  
+
   const classes = useStyles();
     return (
       <div>
@@ -134,7 +128,7 @@ export default function AboutMe () {
             <Tab label="Hobbies" {...a11yProps(2)} />
 
           </Tabs>
-          <Sidebar/>
+
           </Grid>
           <Grid item xs={8}>
             <Main value={value}></Main>

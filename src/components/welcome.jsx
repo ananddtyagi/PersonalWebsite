@@ -9,38 +9,19 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Link from '@material-ui/core/Link';
+
 
 import { makeStyles } from '@material-ui/core/styles';
 
 
 import github from ".././images/github.png";
-import linkedin from ".././images/linkedin.png";
-import wordpress from ".././images/wordpress.png";
-import medium from ".././images/medium.png";
+import linkedin from ".././images/icons8-linkedin-50.png";
+import medium from ".././images/icons8-medium-50.png";
+import profilepic from ".././images/prof_pic.png";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
 
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box p={3}>{children}</Box>}
-    </Typography>
-  );
-}
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,13 +38,22 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     textDecoration:'none',
   },
-  tabs: {
-    textAlign: 'center',
-    paddingBottom: theme.spacing(1),
+  profilepic: {
+    width: '100%',
   },
-  tablabel: {
-    paddingRight: theme.spacing(10),
+  welcometext: {
     paddingLeft: theme.spacing(10),
+    paddingTop: theme.spacing(10),
+
+  },
+  textblock: {
+    paddingBottom: theme.spacing(3),
+  },
+  icons: {
+    paddingTop: theme.spacing(5)
+  },
+  icon: {
+    paddingRight: theme.spacing(2)
   }
 }));
 
@@ -72,7 +62,42 @@ function Main () {
 
   return(
     <div>
-      <h1>Welcome!</h1>
+      <Grid container>
+        <Grid item xs={6}>
+          <Box>
+             <img src={profilepic} className={classes.profilepic  }/>
+          </Box>
+          </Grid>
+          <Grid item xs={6} className={classes.welcometext}>
+            <Typography variant='h2' className={classes.textblock}>
+              Hello
+            </Typography>
+
+            <Typography variant='body1' className={classes.textblock}>
+              My name is Anand. I am a Computer Science and Data Science undergraduate student at NYU.
+            </Typography>
+            <Typography variant='body1' className={classes.textblock}>
+              I enjoy reading, playing the piano and guitar, learning languages, performing magic, and of course, learning anything and everything related to CS.
+            </Typography>
+            <Typography variant='body1' className={classes.textblock}>
+              This is my personal website where you can learn more about me and the projects I have worked on so far.
+            </Typography>
+
+
+            <Box className={classes.icons}>
+              <a target="_blank" href="https://github.com/ananddtyagi" className={classes.icon}>
+                <img className="icon" src={github}/>
+              </a>
+              <a target="_blank" href="https://www.linkedin.com/in/ananddtyagi/"  className={classes.icon}>
+                <img className="icon" src={linkedin}/>
+              </a>
+              <a target="_blank" href="https://medium.com/@anandtyagi"  className={classes.icon}>
+                <img className="icon" src={medium}/>
+              </a>
+            </Box>
+
+          </Grid>
+      </Grid>
     </div>
 
   )
@@ -87,15 +112,11 @@ export default function Welcome () {
     return (
       <div>
         <Grid container spacing={3}>
-          <Grid item xs>
 
-
-          </Grid>
-          <Grid item xs={8}>
+          <Grid item>
             <Main></Main>
           </Grid>
-          <Grid item xs>
-          </Grid>
+
         </Grid>
       </div>
     )

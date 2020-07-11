@@ -78,7 +78,6 @@ function Main(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const [tabIndex, setIndex] = useState(1);
-  const [dummy, setDummy] = useState(0);
 
   const [section, setSection] = useState('About Me');
 
@@ -91,8 +90,6 @@ function Main(props) {
     setValue(0)
     console.log(value)
   }
-
-
 
   return (
     <Router>
