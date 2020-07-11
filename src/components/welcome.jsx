@@ -67,78 +67,32 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Main (props) {
+function Main () {
   const classes = useStyles();
-  let value = props.value
-  const [section, setSection] = useState();
 
-  switch(value){
-    case 0:
-      return (
-        <div classes={classes.root}>
-        <Education/>
-        </div>
-      )
+  return(
+    <div>
+      <h1>Welcome!</h1>
+    </div>
 
-    case 1:
-      return (
-        <div classes={classes.root}>
-        <Work/>
-        </div>
-      )
-
-    case 2:
-      return (
-        <div classes={classes.root}>
-        <Hobbies/>
-        </div>
-      )
-
-    default:
-      return (
-        <div classes={classes.root}>
-        <Education/>
-        </div>
-      )
-
-  }
-
+  )
 
 }
 
 
-
 export default function Welcome () {
-  const [value, setValue] = useState(0);
-  const handleChange = (event, newValue) => {
-    console.log(value)
-    setValue(newValue);
-  };
+
+
   const classes = useStyles();
     return (
       <div>
         <Grid container spacing={3}>
           <Grid item xs>
 
-            <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            indicatorColor="secondary"
-            textColor="secondary"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            className={classes.tabs}
-          >
-            <Tab label="Education" {...a11yProps(0)}/>
-            <Tab label="Work" {...a11yProps(1)}/>
-            <Tab label="Hobbies" {...a11yProps(2)} />
 
-          </Tabs>
-          <Sidebar/>
           </Grid>
           <Grid item xs={8}>
-            <Main value={value}></Main>
+            <Main></Main>
           </Grid>
           <Grid item xs>
           </Grid>
