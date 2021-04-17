@@ -9,7 +9,7 @@ class Main extends Component {
         super(props);
         this.state = {
           posts: [],
-          api: 'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Blog?api_key='+  process.env.REACT_APP_BLOG_API_KEY,
+          api: 'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Blog?api_key='+  process.env.REACT_APP_AIRTABLE_KEY,
         };
       }
 
