@@ -15,7 +15,6 @@ class Main extends Component {
       }
 
     componentDidMount() {
-      console.log(this.state.api)
       fetch(this.state.api)
       .then((resp) => resp.json())
       .then(data => {
