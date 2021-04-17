@@ -64,6 +64,7 @@ export default function Work(props) {
     if (a.fields.ID > b.fields.ID) return 1;
     return 0;
   })
+  console.log(data)
 
   return (
     <div>
