@@ -36,7 +36,7 @@ export default function Hobbies(props) {
   useEffect( () => {
     const fetchData = async () => {
       const result = await axios(
-        'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Hobbies?api_key='+  process.env.REACT_APP_BLOG_API_KEY,
+        'https://api.airtable.com/v0/appQxfMvhEQXCZ2QO/Hobbies?api_key='+  process.env.REACT_APP_AIRTABLE_KEY,
       );
 
       setData(result.data.records);
