@@ -57,7 +57,13 @@ export default function Work(props) {
 
     fetchData();
   }, []);
-
+  
+  data.sort(function(a, b){
+    // Compare the 2 dates
+    if (a.fields.ID < b.fields.ID) return -1;
+    if (a.fields.ID > b.fields.ID) return 1;
+    return 0;
+  })
 
   return (
     <div>
