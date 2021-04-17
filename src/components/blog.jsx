@@ -2,6 +2,7 @@
 import React, { Component , useState, useEffect } from 'react';
 
 import Grid from '@material-ui/core/Grid';
+import Construction from './construction.jsx';
 
 class Main extends Component {
 
@@ -28,7 +29,9 @@ class Main extends Component {
 
     return (
       <div>
-      {this.state.posts.map(post => <BlogPost {...post.fields} />)}
+      {/* {this.state.posts.map(post => <BlogPost {...post.fields} />)} */}
+      <p>In the mean time, please check out my official blog <a href="https://anandtyagi.medium.com/" target="_target">here!</a></p>
+
       </div>
     )
   }
@@ -41,11 +44,13 @@ export default class Blog extends Component {
 
     return (
       <div>
+        <Construction/>
         <Grid container spacing={3}>
           <Grid item xs>
 
           </Grid>
           <Grid item xs={8}>
+            
             <Main></Main>
           </Grid>
 
