@@ -7,7 +7,7 @@ class Main extends Component {
 
     return (
       <div>
-          <p>Hi there! I'm still building this part of the site. Check back soon!</p>
+          <p>Hi there! I'm still building this part of the site. Please check back soon!</p>
       </div>
     )
   }

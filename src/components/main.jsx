@@ -119,7 +119,8 @@ function Main(props) {
                   <Tab fullWidth label="About Me" value ="/about" component={Link} to={'/about'}/>
                   <Tab fullWidth label="Projects" value ="/projects" component={Link} to={'/projects'}/>
                   <Tab fullWidth label="Contact" value ="/contact" component={Link} to={'/contact'}/>
-                  <Tab fullWidth label="Blog" value ="/blog" component={Link} to={'/blog'}/>
+                  {/* <Tab fullWidth label="Blog" value ="/blog" component={Link} to={'/blog'}/> */}
+                  <Tab fullWidth label="Blog" component={Link} to={'/blog'}/>
 
                 </Tabs>
               </Grid>
@@ -133,7 +134,7 @@ function Main(props) {
                 <Route path='/about' render={() => <AboutMe/>} />
                 <Route path='/projects' render={() => <Projects/>} />
                 <Route path='/contact' render={() => <Contact/>} />
-                <Route path='/blog' render={() => <Construction/>} />
+                <Route path='/blog' render={() => <Blog/>} />
 
               </Switch>
             </Grid>
