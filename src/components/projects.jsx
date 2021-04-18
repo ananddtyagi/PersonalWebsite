@@ -73,14 +73,25 @@ export default function Projects(fields) {
 
 function InfoCard ({fields}) {
   const classes = useStyles();
-
+  console.log(fields.URL)
   return (
     <div>
       <div className={classes.subsection}>
         <Box className={classes.main}>
-          <Typography variant='h4'>
-            {fields.Title}
-          </Typography>
+         
+            {typeof fields.URL === 'undefined' ?  
+              <Typography variant='h4'>
+                {fields.Title}
+              </Typography>
+              :
+            <a href={fields.URL} target="_blank">
+              <Typography variant='h4'>
+                {fields.Title}
+              </Typography>
+            </a>
+      
+
+          }
         </Box>
         <Box className={classes.subtext}>
           <Typography varient='h6'>
