@@ -3,6 +3,7 @@ import React, { Component , useState, useEffect } from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import Construction from './construction.jsx';
+import Link from '@material-ui/core/Link';
 
 class Main extends Component {
 
@@ -29,7 +30,11 @@ class Main extends Component {
     return (
       <div>
       {/* {this.state.posts.map(post => <BlogPost {...post.fields} />)} */}
-      <p>In the mean time, please check out my official blog <a href="https://anandtyagi.medium.com/" target="_target">here!</a></p>
+      <p>In the mean time, please check out my official blog 
+        <Link href="https://anandtyagi.medium.com/" target="_blank">
+          {" "} here!
+        </Link>
+      </p>
 
       </div>
     )
