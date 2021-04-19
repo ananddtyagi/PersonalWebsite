@@ -18,6 +18,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import github from ".././images/github.png";
 import linkedin from ".././images/icons8-linkedin-50.png";
 import medium from ".././images/icons8-medium-50.png";
+import resume from ".././images/icons8-resume-50.png";
 import profilepic from ".././images/prof_pic.png";
 
 
@@ -85,6 +86,9 @@ function Main () {
 
 
             <Box className={classes.icons}>
+            <a href="/files/resume.pdf" download className={classes.icon}>
+                <img className="icon" src={resume}/>
+              </a>
               <a target="_blank" href="https://github.com/ananddtyagi" className={classes.icon}>
                 <img className="icon" src={github}/>
               </a>
@@ -94,6 +98,7 @@ function Main () {
               <a target="_blank" href="https://medium.com/@anandtyagi"  className={classes.icon}>
                 <img className="icon" src={medium}/>
               </a>
+
             </Box>
 
           </Grid>
