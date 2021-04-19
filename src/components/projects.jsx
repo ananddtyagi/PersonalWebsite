@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import Link from '@material-ui/core/Link';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -84,14 +85,13 @@ function InfoCard ({fields}) {
                 {fields.Title}
               </Typography>
               :
-            <a href={fields.URL} target="_blank">
-              <Typography variant='h4'>
-                {fields.Title}
-              </Typography>
-            </a>
-      
+                <Typography variant='h4'>
+                  <Link href={fields.URL} target="_blank" >
+                    {fields.Title}
+                  </Link>
+                </Typography>
 
-          }
+            }
         </Box>
         <Box className={classes.subtext}>
           <Typography varient='h6'>
