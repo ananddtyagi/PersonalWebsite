@@ -98,14 +98,14 @@ function Main(props) {
           <div>
             <Grid className={classes.header} item xs={12}>
                 <Typography className={classes.home} variant="h2" component="h2" gutterBottom  component={Link} value ="/" to={'/'}  onClick={handleClick}>
-                  Anand Tyagi
+                  Anand Tyagi 
                 </Typography>
 
             </Grid>
             <Grid container spacing={3} className={classes.tabs}>
               <Grid item xs>
               </Grid>
-              <Grid item xs={8}>
+              <Grid>
                 <Tabs
                   value={value}
                   indicatorColor="primary"
@@ -119,7 +119,6 @@ function Main(props) {
                   <Tab fullWidth label="About Me" value ="/about" component={Link} to={'/about'}/>
                   <Tab fullWidth label="Projects" value ="/projects" component={Link} to={'/projects'}/>
                   <Tab fullWidth label="Contact" value ="/contact" component={Link} to={'/contact'}/>
-                  {/* <Tab fullWidth label="Blog" value ="/blog" component={Link} to={'/blog'}/> */}
                   <Tab fullWidth label="Blog" component={Link} to={'/blog'}/>
 
                 </Tabs>

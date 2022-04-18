@@ -63,45 +63,45 @@ function Main () {
 
   return(
     <div>
-      <Grid container>
-        <Grid item xs={6}>
+      <Grid container columns={{ xs: 12, md: 6 }}>
+        <Grid item xs={12} md={6}>
           <Box>
-             <img src={profilepic} className={classes.profilepic  }/>
+             <img src={profilepic} className={classes.profilepic}/>
           </Box>
-          </Grid>
-          <Grid item xs={6} className={classes.welcometext}>
-            <Typography variant='h2' className={classes.textblock}>
-              Hello
-            </Typography>
+        </Grid>
+        <Grid item className={classes.welcometext} xs={12} md={6}>
+          <Typography variant='h2' className={classes.textblock}>
+            Hello
+          </Typography>
 
-            <Typography variant='body1' className={classes.textblock}>
-              My name is Anand. I am a Computer Science and Data Science undergraduate student at NYU.
-            </Typography>
-            <Typography variant='body1' className={classes.textblock}>
-              I enjoy reading, playing the piano and guitar, learning languages, performing magic, and of course, learning anything and everything related to CS.
-            </Typography>
-            <Typography variant='body1' className={classes.textblock}>
-              This is my personal website where you can learn more about me and the projects I have worked on so far.
-            </Typography>
+          <Typography variant='body1' className={classes.textblock}>
+            My name is Anand. I am a Computer Science and Data Science undergraduate student at NYU.
+          </Typography>
+          <Typography variant='body1' className={classes.textblock}>
+            I enjoy reading, playing the piano and guitar, learning languages, performing magic, and of course, learning anything and everything related to CS.
+          </Typography>
+          <Typography variant='body1' className={classes.textblock}>
+            This is my personal website where you can learn more about me and the projects I have worked on so far.
+          </Typography>
 
 
-            <Box className={classes.icons}>
-            <a href="/files/resume.pdf" download className={classes.icon}>
-                <img className="icon" src={resume}/>
-              </a>
-              <a target="_blank" href="https://github.com/ananddtyagi" className={classes.icon}>
-                <img className="icon" src={github}/>
-              </a>
-              <a target="_blank" href="https://www.linkedin.com/in/ananddtyagi/"  className={classes.icon}>
-                <img className="icon" src={linkedin}/>
-              </a>
-              <a target="_blank" href="https://medium.com/@anandtyagi"  className={classes.icon}>
-                <img className="icon" src={medium}/>
-              </a>
+          <Box className={classes.icons}>
+          <a href="/files/resume.pdf" download className={classes.icon}>
+              <img className="icon" src={resume}/>
+            </a>
+            <a target="_blank" href="https://github.com/ananddtyagi" className={classes.icon}>
+              <img className="icon" src={github}/>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/ananddtyagi/"  className={classes.icon}>
+              <img className="icon" src={linkedin}/>
+            </a>
+            <a target="_blank" href="https://medium.com/@anandtyagi"  className={classes.icon}>
+              <img className="icon" src={medium}/>
+            </a>
 
-            </Box>
+          </Box>
 
-          </Grid>
+        </Grid>
       </Grid>
     </div>
 
