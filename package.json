@@ -2,7 +2,7 @@
   "name": "personal_website",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://anandtyagi.me",
+  "homepage": "https://www.anandtyagi.me",
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
