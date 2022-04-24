@@ -8,7 +8,7 @@ class Main extends Component {
 
     return (
       <div>
-          <p>Email: anand dot tyagi at nyu dot edu</p>
+          <p>Email: anand dot deep dot tyagi at gmail dot com</p>
 
       </div>
     )
