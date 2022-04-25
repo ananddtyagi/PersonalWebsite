@@ -1,57 +1,68 @@
 import { Grid, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 
 import profilepic from ".././images/prof_pic.png";
 
-
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    display: 'flex',
-    width: '100vw',
-  },
-  header: {
-    margin: theme.spacing(5),
-    textAlign: 'center',
-    width: '100vw',
-  },
   intro: {
-    textAlign: 'center',
-    marginTop: '5%',
-    justifyContent: 'center',
-    textAlign: 'center',
+    textAlign: "center",
+    marginTop: "5%",
+    justifyContent: "center",
+    textAlign: "center",
   },
   introContent: {
-    margin: '10%',
-    width: '80%',
-
+    textAlign: "left",
+    marginRight: "5%",
   },
   profilepic: {
-    width: '80%',
-    borderRadius: '25px',
-  }
+    width: "40vw",
+    float: "right",
+    height: "auto",
+    borderRadius: "25px",
+  },
+  text: {
+    paddingBottom: "10%",
+  },
+  mainDescription: {
+    fontWeight: "200",
+    fontSize: "30px",
+  },
 }));
 
 export default function Home(props) {
   const classes = useStyles();
 
-  return (    
-    <Grid  container>
-      <Grid item sm={12} className={classes.header}>
-        <Typography variant="h2" align="center">Anand Tyagi</Typography>
-      </Grid>
+  return (
+    <Grid>
       <Grid container className={classes.intro}>
+        <Grid item sm={6}>
+          <div className={classes.introContent}>
+            <Typography variant="h1" className={classes.text}>
+              Hi!
+            </Typography>
+            <Typography
+              className={`${classes.text} ${classes.mainDescription}`}
+            >
+              I'm Anand. I'm currently software engineer at Flexport. I
+              graudated from NYU in 2021 where I studied Computer Science and
+              Data Science.
+            </Typography>
+            <Typography className={classes.mainDescription}>
+              You can earn more about me <Link to="aboutme">here</Link>
+            </Typography>
+            <Typography className={classes.mainDescription}>
+              Check out my projects <Link to="projects">here</Link>
+            </Typography>
+            <Typography className={classes.mainDescription}>
+              I also write a <Link to="blog"> blog</Link>!
+            </Typography>
+          </div>
+        </Grid>
         <Grid item sm={6}>
           <img src={profilepic} className={classes.profilepic} />
         </Grid>
-        <Grid item sm={6}>
-          <div  className={classes.introContent}>
-            hisdofjsdlkfjldskjflskdjflksdjflksdjlfks flks zdfla sdlkf a;sjkfh ;akjw f;jsd f;ljkasel;fkj asl;kzfh 
-            ofjsdlkfjldskjflskdjflksdjflksdjlfks flks zdfla sdlkf a;sjkfh ;akjw f;jsd f;ljkasel;fkj asl;kzfh 
-            hisdofjsdlkfjldskjflskdjflksdjflksdjlfks flks zdfla sdlkf a;sjkfh ;akjw f;jsd f;ljkasel;fkj asl;kzfh 
-          </div>
-        </Grid>
       </Grid>
     </Grid>
-  )
+  );
 }
