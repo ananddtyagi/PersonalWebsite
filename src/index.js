@@ -4,8 +4,6 @@ import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
-import Homepage from "./components/homepage";
-import AboutMe from "./components/aboutme";
 
 ReactDOM.render(
   <BrowserRouter>
