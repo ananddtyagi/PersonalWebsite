@@ -81,6 +81,16 @@ export default function Header(props) {
                   Projects
                 </Typography>
               </Grid>
+              <Grid item>
+                <Typography
+                  variant="h4"
+                  className={classes.pageLink}
+                  component={Link}
+                  to="blog"
+                >
+                  Blog
+                </Typography>
+              </Grid>
             </Grid>
           </div>
         </Toolbar>
