@@ -6,7 +6,6 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +34,16 @@ const useStyles = makeStyles((theme) => ({
   pageLink: {
     textDecoration: "none",
     fontWeight: "100",
+    fontSize: "20px",
+    color: "black",
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
+  homeLink: {
+    textDecoration: "none",
+    fontWeight: "100",
+    fontSize: "30px",
     color: "black",
     "&:hover": {
       textDecoration: "underline",
@@ -50,12 +59,7 @@ export default function Header(props) {
       <AppBar className={classes.header} elevation={0}>
         <Toolbar className={classes.toolbar}>
           <div className={classes.name}>
-            <Typography
-              className={classes.pageLink}
-              variant="h2"
-              component={Link}
-              to="/"
-            >
+            <Typography className={classes.homeLink} component={Link} to="/">
               Anand Tyagi
             </Typography>
           </div>
@@ -63,7 +67,6 @@ export default function Header(props) {
             <Grid className={classes.pageLinks} container spacing={6}>
               <Grid item>
                 <Typography
-                  variant="h4"
                   className={classes.pageLink}
                   component={Link}
                   to="aboutme"
@@ -73,7 +76,6 @@ export default function Header(props) {
               </Grid>
               <Grid item>
                 <Typography
-                  variant="h4"
                   className={classes.pageLink}
                   component={Link}
                   to="projects"
@@ -83,7 +85,6 @@ export default function Header(props) {
               </Grid>
               <Grid item>
                 <Typography
-                  variant="h4"
                   className={classes.pageLink}
                   component={Link}
                   to="blog"
