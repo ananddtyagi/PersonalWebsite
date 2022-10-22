@@ -49,7 +49,7 @@ export default function Home(props) {
               Data Science.
             </Typography>
             <Typography className={classes.mainDescription}>
-              You can earn more about me <Link to="aboutme">here</Link>
+              You can learn more about me <Link to="aboutme">here</Link>
             </Typography>
             <Typography className={classes.mainDescription}>
               Check out my projects <Link to="projects">here</Link>
