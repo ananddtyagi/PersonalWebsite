@@ -20,14 +20,14 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   name: {
-    marginRight: "auto",
+    marginRight: "5%",
   },
   pages: {
-    marginLeft: "auto",
+    marginRight: "auto",
   },
   pageLinks: {
     direction: "row",
-    alignItems: "center",
+    // alignItems: "center",
     color: "black",
     textDecoration: "none",
   },

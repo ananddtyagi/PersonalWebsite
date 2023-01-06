@@ -7,7 +7,6 @@ import profilepic from ".././images/prof_pic.png";
 const useStyles = makeStyles((theme) => ({
   intro: {
     textAlign: "center",
-    marginTop: "5%",
     justifyContent: "center",
     textAlign: "center",
   },
@@ -16,10 +15,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "5%",
   },
   profilepic: {
-    width: "40vw",
+    width: "30vw",
     float: "right",
     height: "auto",
     borderRadius: "25px",
+    marginTop: "5%",
+    marginRight: "10%",
   },
   text: {
     paddingBottom: "10%",

@@ -9,7 +9,12 @@ import Projects from "./components/projects";
 
 const useStyles = makeStyles((theme) => ({
   website: {
-    padding: "5%",
+    position: "fixed",
+    top: "5%",
+    bottom: 0,
+    left: "5%",
+    right: "5%",
+    // padding: "5%",
   },
 }));
 
