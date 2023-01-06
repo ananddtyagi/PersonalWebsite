@@ -1,19 +1,19 @@
 {
   "name": "personal_website",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "homepage": "https://www.anandtyagi.me",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
-    "@mdx-js/loader": "^2.1.1",
-    "@mdx-js/mdx": "^2.1.1",
-    "@mdx-js/react": "^2.1.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "@mdx-js/loader": "^2.2.1",
+    "@mdx-js/mdx": "^2.2.1",
+    "@mdx-js/react": "^2.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "6.3.0",
     "react-scripts": "^4.0.3",
     "remark-gfm": "^3.0.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.6"
   },
   "scripts": {
     "start": "react-app-rewired start",
