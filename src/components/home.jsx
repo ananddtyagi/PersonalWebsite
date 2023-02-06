@@ -76,7 +76,7 @@ export default function Home(props) {
             <Typography
               className={`${classes.text} ${classes.mainDescription}`}
             >
-              I'm currently Software Engineer at Flexport. I graudated from NYU
+              I'm currently a Software Engineer at Flexport. I graudated from NYU
               in 2021 where I studied Computer Science and Data Science.
             </Typography>
           </div>
