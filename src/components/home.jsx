@@ -1,6 +1,5 @@
 import { Grid, makeStyles, Typography, Box } from "@material-ui/core";
 import React from "react";
-import { Link } from "react-router-dom";
 
 import profilepic from ".././images/prof_pic.png";
 import github from ".././images/github.png";
@@ -65,55 +64,55 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home(props) {
-  const classes = useStyles();
+  const styles = useStyles();
 
   return (
     <Grid>
-      <Grid container className={classes.intro}>
+      <Grid container className={styles.intro}>
         <Grid item xs={12} sm={6}>
-          <div className={classes.introContent}>
-            <Typography className={classes.text}>Hi! I'm Anand.</Typography>
+          <div className={styles.introContent}>
+            <Typography className={styles.text}>Hi! I'm Anand.</Typography>
             <Typography
-              className={`${classes.text} ${classes.mainDescription}`}
+              className={`${styles.text} ${styles.mainDescription}`}
             >
               I'm currently a Software Engineer II at Flexport. I graudated from NYU
               in 2021 where I studied Computer Science and Data Science.
             </Typography>
           </div>
 
-          <Box className={classes.icons}>
+          <Box className={styles.icons}>
             <a
               href="content/AnandTyagiResume.pdf"
               download
-              className={classes.icon}
+              className={styles.icon}
             >
               <img className="icon" src={resume} />
             </a>
             <a
               target="_blank"
               href="https://github.com/ananddtyagi"
-              className={classes.icon}
+              className={styles.icon}
             >
               <img className="icon" src={github} />
             </a>
             <a
               target="_blank"
               href="https://www.linkedin.com/in/ananddtyagi/"
-              className={classes.icon}
+              className={styles.icon}
             >
               <img className="icon" src={linkedin} />
             </a>
             <a
               target="_blank"
               href="https://medium.com/@anandtyagi"
-              className={classes.icon}
+              className={styles.icon}
             >
               <img className="icon" src={medium} />
             </a>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <img src={profilepic} className={classes.profilepic} />
+          <img src={profilepic} className={styles.profilepic} />
         </Grid>
       </Grid>
     </Grid>
