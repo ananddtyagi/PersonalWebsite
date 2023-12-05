@@ -75,8 +75,10 @@ export default function Home(props) {
             <Typography
               className={`${styles.text} ${styles.mainDescription}`}
             >
-              I'm currently a Software Engineer II at Flexport. I graudated from NYU
-              in 2021 where I studied Computer Science and Data Science.
+              
+              I graduated from NYU in 2021 where I studied Computer Science and Data Science.
+              After that, I worked at Flexport for 2 years as a full-stack engineer.
+              I'm currently learning all about ML performance optimization and compilers.
             </Typography>
           </div>
 
