@@ -75,10 +75,10 @@ export default function Home(props) {
             <Typography
               className={`${styles.text} ${styles.mainDescription}`}
             >
-              
+
               I graduated from NYU in 2021 where I studied Computer Science and Data Science.
               After that, I worked at Flexport for 2 years as a full-stack engineer.
-              I'm currently learning all about ML performance optimization and compilers.
+              Mid 2024 I started Omnivista, a startup focused on helping financial institutions deploy automated advisory services to their clients.
             </Typography>
           </div>
 
