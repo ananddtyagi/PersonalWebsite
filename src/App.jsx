@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import About from './components/sections/About';
 import Blog from './components/sections/Blog';
 import Contact from './components/sections/Contact';
-import ContentPlatforms from './components/sections/ContentPlatforms';
 import Hero from './components/sections/Hero';
 import Projects from './components/sections/Projects';
 import Navigation from './components/ui/Navigation';
@@ -28,7 +27,6 @@ function HomePage() {
         <Hero />
         <About />
         <Projects />
-        <ContentPlatforms />
         <Blog />
         <Contact />
       </MainContent>
