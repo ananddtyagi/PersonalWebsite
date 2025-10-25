@@ -1,8 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import CountUp from 'react-countup';
+import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 
 const PlatformContainer = styled.section`
@@ -311,14 +310,7 @@ const ContentPlatforms = () => {
       },
     },
   ];
-  
-  const upcomingContent = [
-    { icon: '🎥', text: 'AI Development Tutorials' },
-    { icon: '🚀', text: 'Startup Journey Vlogs' },
-    { icon: '💻', text: 'Live Coding Sessions' },
-    { icon: '🎙️', text: 'Tech Interview Series' },
-  ];
-  
+
   return (
     <PlatformContainer ref={ref}>
       <Container>
@@ -328,15 +320,9 @@ const ContentPlatforms = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
           >
-            Content & Community
+            Content
           </SectionTitle>
-          <SectionSubtitle
-            initial={{ opacity: 0, y: -20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            Follow my journey across platforms
-          </SectionSubtitle>
+
         </SectionHeader>
         
         <YouTubeSection
@@ -352,7 +338,7 @@ const ContentPlatforms = () => {
               YouTube Channel
             </YouTubeTitle>
             <SubscribeButton 
-              href="https://www.youtube.com/@ananddtyagi" 
+              href="https://www.youtube.com/@anandtyagi618" 
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -361,18 +347,51 @@ const ContentPlatforms = () => {
           </YouTubeHeader>
           
           <VideoPreview>
-            <ComingSoonText>Channel Launching Soon</ComingSoonText>
-            <ComingSoonSubtext>Quality content on AI, coding, and startups</ComingSoonSubtext>
+            <ComingSoonText>Featured Content</ComingSoonText>
+            <ComingSoonSubtext style={{ marginBottom: '20px' }}>Check out my recent videos and tutorials</ComingSoonSubtext>
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+              <a 
+                href="https://www.youtube.com/watch?v=HSkLeECsBcw&ab_channel=AnandTyagi"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: '12px 24px',
+                  background: '#FF0000',
+                  color: 'white',
+                  borderRadius: '25px',
+                  textDecoration: 'none',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  transition: 'all 0.3s ease',
+                }}
+                onMouseOver={(e) => e.target.style.background = '#CC0000'}
+                onMouseOut={(e) => e.target.style.background = '#FF0000'}
+              >
+                🎥 Watch Latest Video
+              </a>
+              <a 
+                href="https://post-training.aitinkerers.org/p/claude-code-tips-and-tricks"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: '12px 24px',
+                  background: '#000000',
+                  color: 'white',
+                  borderRadius: '25px',
+                  textDecoration: 'none',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  transition: 'all 0.3s ease',
+                }}
+                onMouseOver={(e) => e.target.style.background = '#333333'}
+                onMouseOut={(e) => e.target.style.background = '#000000'}
+              >
+                📝 Claude Code Tips & Tricks
+              </a>
+            </div>
           </VideoPreview>
           
-          <UpcomingContent>
-            {upcomingContent.map((item, index) => (
-              <ContentItem key={index}>
-                <span>{item.icon}</span>
-                <p>{item.text}</p>
-              </ContentItem>
-            ))}
-          </UpcomingContent>
+        
         </YouTubeSection>
         
         <PlatformGrid>

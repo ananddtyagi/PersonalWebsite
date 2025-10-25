@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import profilePic from '../../images/profilepic.jpg';
 import { theme } from '../../styles/theme';
 
 const HeroContainer = styled.section`
@@ -47,6 +48,41 @@ const ContentWrapper = styled.div`
   z-index: 10;
   text-align: center;
   padding: ${theme.spacing.xl};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${theme.spacing.lg};
+`;
+
+const ProfileImageContainer = styled(motion.div)`
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin-bottom: ${theme.spacing.md};
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: ${theme.gradients.primary};
+    border-radius: 50%;
+    animation: rotate 8s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+`;
+
+const ProfileImage = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid ${theme.colors.neutral.offWhite};
+  box-shadow: ${theme.shadows.lg};
 `;
 
 const MainTitle = styled(motion.h1)`
@@ -93,66 +129,87 @@ const RoleText = styled(motion.div)`
   font-size: ${theme.typography.sizes.h3};
   font-weight: ${theme.typography.weights.light};
   color: ${theme.colors.neutral.stone};
-  min-height: 40px;
+  min-height: 60px;
   margin-bottom: ${theme.spacing.xl};
-  
-  .cursor {
-    display: inline-block;
-    width: 3px;
-    height: 1.2em;
-    background: ${theme.colors.primary.limeBright};
-    margin-left: 2px;
-    animation: blink 1s infinite;
-  }
-  
-  @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-  }
-`;
-
-const CTAButton = styled(motion.a)`
-  display: inline-flex;
-  align-items: center;
-  gap: ${theme.spacing.sm};
-  padding: ${theme.spacing.md} ${theme.spacing.lg};
-  background: ${theme.colors.primary.forestDeep};
-  color: ${theme.colors.neutral.white};
-  border-radius: ${theme.radii.full};
-  font-weight: ${theme.typography.weights.medium};
-  font-size: ${theme.typography.sizes.body};
-  transition: ${theme.transitions.normal};
-  cursor: pointer;
   position: relative;
-  overflow: hidden;
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: ${theme.colors.primary.limeBright};
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-  
-  &:hover {
-    color: ${theme.colors.primary.forestDeep};
-    transform: translateY(-2px);
-    box-shadow: ${theme.shadows.lg};
+  .role-container {
+    position: relative;
+    display: inline-block;
+    
+    .role-text {
+      position: relative;
+      z-index: 2;
+      
+      .char {
+        display: inline-block;
+        opacity: 0;
+        animation: typeIn 0.1s ease-out forwards;
+        
+        &.typing {
+          animation: typeIn 0.15s ease-out forwards;
+        }
+        
+        &.deleting {
+          animation: typeOut 0.05s ease-in forwards;
+        }
+      }
+      
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 3px;
+        height: 1.2em;
+        background: ${theme.colors.primary.limeBright};
+        margin-left: 4px;
+        animation: blink 1.2s infinite;
+        box-shadow: 0 0 8px ${theme.colors.primary.limeBright}40;
+      }
+    }
     
     &::before {
-      width: 300px;
-      height: 300px;
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, ${theme.colors.primary.limeBright}, transparent);
+      animation: underlineGrow 0.5s ease-out forwards;
     }
   }
   
-  span {
-    position: relative;
-    z-index: 1;
+  @keyframes typeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes typeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-5px) scale(0.9);
+    }
+  }
+  
+  @keyframes blink {
+    0%, 45% { opacity: 1; }
+    50%, 95% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes underlineGrow {
+    0% { width: 0; }
+    100% { width: 100%; }
   }
 `;
 
@@ -195,25 +252,26 @@ const Hero = () => {
   
   useEffect(() => {
     const roles = [
-      'Founder & CEO',
-      'AI Consultant',
+      'Founder & CEO @ Omnivista',
+      'AI Infrastructure Consultant',
       'Full-Stack Engineer',
-      'ML Specialist',
-      'Creative Technologist'
+      'MCP Tools Creator',
+      'AI Tinkerer',
+      'Helpful Builder',
     ];
     const currentRole = roles[currentRoleIndex];
     const timeout = setTimeout(() => {
       if (!isDeleting && displayedRole !== currentRole) {
         setDisplayedRole(currentRole.slice(0, displayedRole.length + 1));
       } else if (!isDeleting && displayedRole === currentRole) {
-        setTimeout(() => setIsDeleting(true), 2000);
+        setTimeout(() => setIsDeleting(true), 2500);
       } else if (isDeleting && displayedRole !== '') {
         setDisplayedRole(displayedRole.slice(0, -1));
       } else if (isDeleting && displayedRole === '') {
         setIsDeleting(false);
         setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
       }
-    }, isDeleting ? 50 : 100);
+    }, isDeleting ? 30 : Math.random() * 50 + 80);
     
     return () => clearTimeout(timeout);
   }, [displayedRole, isDeleting, currentRoleIndex]);
@@ -282,6 +340,18 @@ const Hero = () => {
       </BackgroundElements>
       
       <ContentWrapper>
+        <ProfileImageContainer
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.215, 0.610, 0.355, 1.000],
+            delay: 0.2
+          }}
+        >
+          <ProfileImage src={profilePic} alt="Anand Tyagi" />
+        </ProfileImageContainer>
+
         <MainTitle>
           <motion.span
             className="first-name"
@@ -301,36 +371,15 @@ const Hero = () => {
             TYAGI
           </motion.span>
         </MainTitle>
-        
+
         <RoleText>
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={displayedRole}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
+          <div className="role-container">
+            <div className="role-text">
               {displayedRole}
-              <span className="cursor" />
-            </motion.span>
-          </AnimatePresence>
+            </div>
+          </div>
         </RoleText>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.5 }}
-        >
-          <CTAButton href="#contact">
-            <span>Let's Build Something Amazing</span>
-            <motion.span
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              →
-            </motion.span>
-          </CTAButton>
-        </motion.div>
+
       </ContentWrapper>
       
       <ScrollIndicator

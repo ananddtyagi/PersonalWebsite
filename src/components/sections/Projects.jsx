@@ -1,9 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { theme } from '../../styles/theme';
+import styled from 'styled-components';
 import useSWR from 'swr';
+import { theme } from '../../styles/theme';
 
 const ProjectsContainer = styled.section`
   padding: ${theme.spacing.xxl} 0;
@@ -234,94 +234,59 @@ const ProjectLink = styled.a`
   }
 `;
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
 const Projects = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
   });
-  
+
+  // Fetch all repos and compute top 10 by stars
+  const token = process.env.REACT_APP_GITHUB_TOKEN;
+  const authedFetcher = (url) =>
+    fetch(url, {
+      headers: token
+        ? {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/vnd.github+json',
+          }
+        : { Accept: 'application/vnd.github+json' },
+    }).then((res) => res.json());
+
   const { data: reposData } = useSWR(
-    'https://api.github.com/users/ananddtyagi/repos?per_page=10&sort=updated',
-    fetcher,
+    'https://api.github.com/users/ananddtyagi/repos?per_page=100',
+    authedFetcher,
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
-      refreshInterval: 3600000
+      refreshInterval: 3600000,
     }
   );
+
+  const topRepos = React.useMemo(() => {
+    if (!Array.isArray(reposData)) return [];
+    return reposData
+      .slice()
+      .sort((a, b) => (b?.stargazers_count || 0) - (a?.stargazers_count || 0))
+      .slice(0, 10);
+  }, [reposData]);
   
-  const featuredProjects = [
-    {
-      id: 'omnivista',
-      title: 'Omnivista',
-      description: 'AI-powered chat deployment platform supporting voice and text interactions with memory and personalization.',
-      size: 'large',
+  const featuredProjects = React.useMemo(() => (
+    topRepos.map((repo, index) => ({
+      id: repo.name,
+      title: repo.name,
+      description: repo.description || 'No description provided.',
+      size: index < 2 ? 'wide' : 'normal',
       featured: true,
-      tech: ['React', 'TypeScript', 'Node.js', 'AI/LLMs', 'WebRTC'],
-      github: null,
-      demo: 'https://omnivista.ai',
-      stats: { stars: 45, forks: 12 },
-    },
-    {
-      id: 'claude-code-editor',
-      title: 'Claude Code Editor',
-      description: 'VS Code extension to enhance file search in Claude Code.',
-      size: 'normal',
-      tech: ['TypeScript', 'VS Code API'],
-      github: 'https://github.com/ananddtyagi/claude-code-editor',
-      stats: { stars: 234, downloads: '200+' },
-    },
-    {
-      id: 'mcp-tools',
-      title: 'MCP Tool Suite',
-      description: 'Collection of Model Context Protocol tools for enhanced AI interactions.',
-      size: 'wide',
-      tech: ['Python', 'MCP', 'AI'],
-      github: 'https://github.com/ananddtyagi/mcp-tools',
-      stats: { stars: 89, forks: 23 },
-    },
-    {
-      id: 'credit-card',
-      title: 'Credit Card Suggester',
-      description: 'AI chatbot to help choose the best credit card based on spending habits.',
-      size: 'normal',
-      tech: ['React', 'Python', 'LLMs'],
-      github: 'https://github.com/ananddtyagi/credit-card-suggester',
-      stats: { stars: 18, forks: 5 },
-    },
-    {
-      id: 'context-manager',
-      title: 'Context File Manager',
-      description: 'CLI tool for prompt storage and reuse across projects.',
-      size: 'normal',
-      tech: ['Python', 'CLI'],
-      github: 'https://github.com/ananddtyagi/context-manager',
-      stats: { stars: 32, forks: 8 },
-    },
-  ];
-  
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
+      tech: [repo.language || 'Code'],
+      github: repo.html_url,
+      stats: {
+        stars: repo.stargazers_count ?? 0,
+        forks: repo.forks_count ?? 0,
       },
-    },
-  };
+    }))
+  ), [topRepos]);
   
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
+  
   
   return (
     <ProjectsContainer id="projects" ref={ref}>
@@ -392,6 +357,39 @@ const Projects = () => {
                       <path d="M8 2a5.53 5.53 0 00-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854l-2 2a.5.5 0 01-.708 0l-2-2a.5.5 0 11.708-.708L7.5 9.293V5.5a.5.5 0 011 0v3.793l1.146-1.147a.5.5 0 01.708.708z"/>
                     </svg>
                     {project.stats.downloads}
+                  </Stat>
+                )}
+                {project.stats.pilots && (
+                  <Stat>
+                    <svg viewBox="0 0 16 16">
+                      <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                    </svg>
+                    {project.stats.pilots} pilots
+                  </Stat>
+                )}
+                {project.stats.chats && (
+                  <Stat>
+                    <svg viewBox="0 0 16 16">
+                      <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    </svg>
+                    {project.stats.chats} chats
+                  </Stat>
+                )}
+                {project.stats.scale && (
+                  <Stat>
+                    <svg viewBox="0 0 16 16">
+                      <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                    </svg>
+                    {project.stats.scale}
+                  </Stat>
+                )}
+                {project.stats.status && (
+                  <Stat>
+                    <svg viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.061L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                    </svg>
+                    {project.stats.status}
                   </Stat>
                 )}
               </ProjectStats>

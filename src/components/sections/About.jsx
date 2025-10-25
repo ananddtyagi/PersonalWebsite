@@ -1,9 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { theme } from '../../styles/theme';
+import styled from 'styled-components';
 import profilePic from '../../images/prof_pic.png';
+import { theme } from '../../styles/theme';
 
 const AboutContainer = styled.section`
   padding: ${theme.spacing.xxl} 0;
@@ -214,7 +214,29 @@ const TimelineDescription = styled.p`
   font-size: ${theme.typography.sizes.body};
   line-height: ${theme.typography.lineHeights.normal};
   color: ${theme.colors.neutral.charcoal};
+  
+  & a {
+    color: ${theme.colors.primary.limeBright};
+    text-decoration: underline;
+  }
 `;
+
+// Renders plain-text URLs as clickable links while preserving other text
+const renderWithLinks = (text) => {
+  if (!text) return text;
+  const urlRegex = /(https?:\/\/[^\s)]+|www\.[^\s)]+)/gi;
+  return text.split(urlRegex).map((part, index) => {
+    if (part && part.match(urlRegex)) {
+      const href = part.startsWith('http') ? part : `https://${part}`;
+      return (
+        <a key={index} href={href} target="_blank" rel="noopener noreferrer">
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+};
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -224,22 +246,28 @@ const About = () => {
   
   const timeline = [
     {
+      date: 'Jul 2024 - Present',
+      title: 'Founder & CEO',
+      company: 'Omnivista (omnivista.ai)',
+      description: 'Created one-click AI chatbot platform with voice/text interactions, memory, and personalization. Fully bootstrapped. Learn more at https://omnivista.ai',
+    },
+    {
       date: 'Jan 2025 - Present',
       title: 'AI Consultant',
       company: 'Independent Consulting',
-      description: 'Providing consulting services to help companies scale AI infrastructure and implement AI in customer-facing products.',
-    },
-    {
-      date: 'Jul 2024 - Present',
-      title: 'Founder & CEO',
-      company: 'Omnivista',
-      description: 'Building AI-powered chat deployment platform supporting voice and text interactions. Running 5 pilots with 2,000+ chats handled.',
+      description: 'Providing consulting services to multiple companies for scaling AI infrastructure and strategizing implementation of AI in customer-facing products. Delivered solutions for memory, prompt iteration, and evaluation pipelines.',
     },
     {
       date: 'Jul 2021 - Oct 2023',
       title: 'Software Engineer II',
       company: 'Flexport',
-      description: 'Led HTS ML Recommendation project and Restricted Countries Scanning handling 290k+ daily scans.',
+      description: 'Led HTS ML Recommendation project as project lead and scrum master. Built Restricted Countries Scanning handling 290k+ daily scans. Managed 3 engineers through complete project lifecycle.',
+    },
+    {
+      date: 'Jan 2021 - Apr 2021',
+      title: 'Software Engineer Intern',
+      company: 'Klarity',
+      description: 'Used Python and AWS Textract for PDF table extraction. Built handwritten signature detection using OpenCV and synthetic dataset creation.',
     },
     {
       date: 'May 2021',
@@ -250,9 +278,10 @@ const About = () => {
   ];
   
   const skills = [
-    'React/Next.js', 'TypeScript', 'Python', 'Go', 
-    'LLMs/AI', 'Node.js', 'AWS', 'Docker',
-    'ML/NLP', 'System Design', 'Leadership', 'Consulting'
+    'AI Product Development', 'Voice AI', 'React', 'TypeScript',  'Project Management', 'Javascript', 'Python', 'JavaScript', 'Java',
+    'Node.js', 'AWS', 'GCP',
+    'ML/NLP', 'MCP', 
+    'Consulting', 'Startups', 'Low Latency System Design',
   ];
   
   const containerVariants = {
@@ -304,24 +333,39 @@ const About = () => {
             >
               <InfoTitle>Quick Facts</InfoTitle>
               <Bio>
-                I'm a technologist and entrepreneur passionate about building AI-powered solutions 
-                that make a real impact. Currently leading Omnivista and helping companies scale 
-                their AI infrastructure through consulting.
+                I'm a technologist and entrepreneur specializing in building AI products and full-stack development. 
+                After graduating from NYU with a CS & Data Science degree, I started my CS career at Flexport and eventually
+                led two projects before I moved on to starting my first startup.
+                Now I'm building Omnivista to help any company add the latest developments in voice technology to their products.
+                I also consult from time to time for companies wanting to add AI to their products.
               </Bio>
               
               <InfoTitle>Skills</InfoTitle>
               <SkillsGrid>
-                {skills.map((skill, index) => (
-                  <SkillPill
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {skill}
-                  </SkillPill>
-                ))}
+                {skills.map((skill, index) => {
+                  // Calculate how many pill widths this skill needs
+                  const estimatedWidth = skill.length * 8; // rough character width estimate
+                  const pillWidth = 120; // base pill width
+                  const spanCount = Math.ceil(estimatedWidth / pillWidth);
+                  
+                  return (
+                    <SkillPill
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={inView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
+                      whileHover={{ scale: 1.05 }}
+                      style={{ 
+                        gridColumn: `span ${spanCount}`,
+                        minWidth: `${pillWidth}px`,
+                        whiteSpace: 'nowrap',
+                        overflow: 'visible'
+                      }}
+                    >
+                      {skill}
+                    </SkillPill>
+                  );
+                })}
               </SkillsGrid>
             </InfoCard>
           </LeftColumn>
@@ -342,7 +386,7 @@ const About = () => {
                     <TimelineDate>{item.date}</TimelineDate>
                     <TimelineTitle>{item.title}</TimelineTitle>
                     <TimelineCompany>{item.company}</TimelineCompany>
-                    <TimelineDescription>{item.description}</TimelineDescription>
+                    <TimelineDescription>{renderWithLinks(item.description)}</TimelineDescription>
                   </TimelineItem>
                 ))}
               </motion.div>

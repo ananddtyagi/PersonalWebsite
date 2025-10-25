@@ -1,25 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
-import { Link, useLocation } from 'react-router-dom';
 
 const Nav = styled(motion.nav)`
   position: fixed;
-  top: 0;
+  top: ${props => props.$scrolled ? '0' : theme.spacing.lg};
   left: 0;
   right: 0;
   z-index: ${theme.zIndex.navigation};
-  padding: ${theme.spacing.md} 0;
-  transition: ${theme.transitions.normal};
-  
+  transition: ${theme.transitions.slow};
+`;
+
+const NavSurface = styled(motion.div)`
+  margin: 0 auto;
+  width: ${props => props.$scrolled ? '100%' : 'min(1000px, calc(100% - 32px))'};
+  border-radius: ${props => props.$scrolled ? '0' : theme.radii.full};
+  padding: ${props => props.$scrolled ? `${theme.spacing.sm} ${theme.spacing.lg}` : `${theme.spacing.md} ${theme.spacing.lg}`};
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: ${theme.shadows.glass};
   ${props => props.$scrolled && `
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    border-left: none;
+    border-right: none;
+    border-top: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: ${theme.shadows.glass};
   `}
+  transition: ${theme.transitions.slow};
 `;
 
 const NavContainer = styled.div`
@@ -33,7 +43,7 @@ const NavContainer = styled.div`
 
 const Logo = styled(Link)`
   font-family: ${theme.typography.fonts.display};
-  font-size: ${theme.typography.sizes.h4};
+  font-size: ${props => props.$expanded ? theme.typography.sizes.h3 : theme.typography.sizes.h4};
   font-weight: ${theme.typography.weights.bold};
   color: ${theme.colors.primary.forestDeep};
   text-decoration: none;
@@ -58,7 +68,7 @@ const Logo = styled(Link)`
 
 const NavLinks = styled.div`
   display: flex;
-  gap: ${theme.spacing.lg};
+  gap: ${props => props.$expanded ? `calc(${theme.spacing.xl} + 8px)` : `calc(${theme.spacing.lg} + 8px)`};
   align-items: center;
   
   @media (max-width: 768px) {
@@ -68,7 +78,7 @@ const NavLinks = styled.div`
 
 const NavLink = styled.a`
   font-family: ${theme.typography.fonts.body};
-  font-size: ${theme.typography.sizes.body};
+  font-size: ${props => props.$expanded ? theme.typography.sizes.bodyLarge : theme.typography.sizes.body};
   font-weight: ${theme.typography.weights.medium};
   color: ${props => props.$active ? theme.colors.primary.limeBright : theme.colors.primary.forestDeep};
   text-decoration: none;
@@ -171,17 +181,43 @@ const MobileNavLink = styled(motion.a)`
   }
 `;
 
+const ResumeButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${theme.spacing.xs} ${theme.spacing.md};
+  border-radius: ${theme.radii.full};
+  background: ${theme.colors.primary.forestDeep};
+  color: ${theme.colors.neutral.white};
+  text-decoration: none;
+  font-family: ${theme.typography.fonts.body};
+  font-size: ${theme.typography.sizes.body};
+  font-weight: ${theme.typography.weights.medium};
+  transition: ${theme.transitions.normal};
+  border: 1px solid transparent;
+  
+  &:hover {
+    background: ${theme.colors.primary.limeBright};
+    color: ${theme.colors.primary.forestDeep};
+    transform: translateY(-1px);
+    border-color: ${theme.colors.primary.limeBright};
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const location = useLocation();
   
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       
-      const sections = ['hero', 'about', 'work', 'projects', 'blog', 'stats', 'contact'];
+      const sections = ['hero', 'about', 'projects', 'blog', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -225,10 +261,8 @@ const Navigation = () => {
   
   const navItems = [
     { href: '#about', label: 'About' },
-    { href: '#work', label: 'Work' },
     { href: '#projects', label: 'Projects' },
     { href: '#blog', label: 'Blog' },
-    { href: '#stats', label: 'Stats' },
     { href: '#contact', label: 'Contact' },
   ];
   
@@ -240,21 +274,30 @@ const Navigation = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
+        <NavSurface
+          $scrolled={scrolled}
+          layout
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+        >
         <NavContainer>
-          <Logo to="/">ANAND TYAGI</Logo>
+          <Logo to="/" $expanded={scrolled}>ANAND TYAGI</Logo>
           
-          <NavLinks>
+          <NavLinks $expanded={scrolled}>
             {navItems.map((item) => (
               <NavLink
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
+                $expanded={scrolled}
                 $active={activeSection === item.href.slice(1)}
               >
                 {item.label}
               </NavLink>
             ))}
           </NavLinks>
+          <ResumeButton href="content/AnandTyagiResume.pdf" download>
+            Resume
+          </ResumeButton>
           
           <MobileMenuButton
             $open={mobileMenuOpen}
@@ -266,6 +309,7 @@ const Navigation = () => {
             <span />
           </MobileMenuButton>
         </NavContainer>
+        </NavSurface>
       </Nav>
       
       <AnimatePresence>

@@ -2,14 +2,13 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import styled from 'styled-components';
 
-import Navigation from './components/ui/Navigation';
-import Hero from './components/sections/Hero';
 import About from './components/sections/About';
-import Projects from './components/sections/Projects';
-import GitHubStats from './components/sections/GitHubStats';
-import ContentPlatforms from './components/sections/ContentPlatforms';
 import Blog from './components/sections/Blog';
 import Contact from './components/sections/Contact';
+import ContentPlatforms from './components/sections/ContentPlatforms';
+import Hero from './components/sections/Hero';
+import Projects from './components/sections/Projects';
+import Navigation from './components/ui/Navigation';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -29,7 +28,6 @@ function HomePage() {
         <Hero />
         <About />
         <Projects />
-        <GitHubStats />
         <ContentPlatforms />
         <Blog />
         <Contact />
